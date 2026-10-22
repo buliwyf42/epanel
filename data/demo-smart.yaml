@@ -113,6 +113,7 @@ data:
       brand: ABB
       model: F202 A-40/0.03
       upstream: KV1
+      terminals: [{id: '1', role: in, conductor: L1}, {id: '3', role: in, conductor: 'N'}, {id: '2', side: bottom, role: out, conductor: L1}, {id: '4', side: bottom, role: out, conductor: 'N'}]
       tags: [кухня]
     - id: QF1
       type: mcb
@@ -120,6 +121,7 @@ data:
       rating: 16
       curve: C
       upstream: QD1
+      terminals: [{id: '1', role: in, conductor: L1, to: QD1.2, color: brown, crossSection: 2.5}, {id: '2', side: bottom, role: out, conductor: L1}]
       circuit: {cable: ВВГнг(А)-LS 3×2.5, crossSection: 2.5, lengthM: 14}
       tags: [кухня, розетки]
       notes: [{author: Иван, date: '2026-09-10', text: 'Чайник и кофемашина одновременно держатся спокойно. Если добавить тостер, линия уже на грани.'}]
