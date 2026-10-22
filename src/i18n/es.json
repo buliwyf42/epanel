@@ -890,7 +890,7 @@
       "createTask": "Crear tarea",
       "joinTask": "Añadir a la tarea",
       "leaveTask": "Quitar de la tarea",
-      "color": "Colour"
+      "color": "Color"
     },
     "smart": {
       "title": "Bus domótico",
@@ -1116,6 +1116,16 @@
       "fromLinks": "según las conexiones de bornes",
       "position": "Posición del conmutador",
       "positionOff": "0 (apagado)"
+    },
+    "colorAuto": "Automático (según el conductor)",
+    "color": {
+      "brown": "marrón",
+      "black": "negro",
+      "grey": "gris",
+      "blue": "azul",
+      "green-yellow": "verde-amarillo",
+      "red": "rojo",
+      "white": "blanco"
     }
   },
   "landing": {

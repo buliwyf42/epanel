@@ -890,7 +890,7 @@
       "createTask": "Napravi zadatak",
       "joinTask": "Dodaj u zadatak",
       "leaveTask": "Ukloni iz zadatka",
-      "color": "Colour"
+      "color": "Boja"
     },
     "smart": {
       "title": "Magistrala pametne kuće",
@@ -1116,6 +1116,16 @@
       "fromLinks": "iz veza klema",
       "position": "Položaj preklopke",
       "positionOff": "0 (isključeno)"
+    },
+    "colorAuto": "Automatski (po provodniku)",
+    "color": {
+      "brown": "braon",
+      "black": "crna",
+      "grey": "siva",
+      "blue": "plava",
+      "green-yellow": "zeleno-žuta",
+      "red": "crvena",
+      "white": "bela"
     }
   },
   "landing": {
