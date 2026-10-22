@@ -46,6 +46,11 @@ const leverColor = computed(() => {
 
 const terminalsTop = computed(() => Array.from({ length: Math.max(1, Math.round(props.width)) }, (_, i) => i))
 
+// NEOZED: the fuse's indicator shows its rating colour through the cap (IEC 60269-3 colour code)
+const NEOZED_COLORS: Record<number, string> = { 2: '#f9a8d4', 4: '#8b5a2b', 6: '#16a34a', 10: '#dc2626', 16: '#9ca3af', 20: '#2563eb', 25: '#facc15', 35: '#1f1f1f', 50: '#f5f5f4', 63: '#b87333' }
+const neozedColor = computed(() => NEOZED_COLORS[props.device.rating ?? 0] ?? '#d6d3d1')
+const capR = computed(() => Math.min(14, W.value / poles.value / 2 - 3))
+
 // no live data yet: the relay shows the nominal supply voltage and the meter no reading,
 // so nothing on screen can be mistaken for a measurement
 const nominalVolts = computed(() => store.data?.supply.voltage ?? 230)
@@ -188,6 +193,17 @@ const busColor = computed(() => {
         <rect :x="(i - 1) * MODULE + 4" y="50" :width="MODULE - 8" height="78" rx="3" fill="url(#shoulder)" stroke="#9a9a92" />
         <rect :x="(i - 1) * MODULE + MODULE / 2 - 5" y="62" width="10" height="34" rx="2" fill="#f2efe4" stroke="#8a8578" />
         <rect :x="(i - 1) * MODULE + MODULE / 2 - 3" y="74" width="6" height="8" rx="1" :fill="energized ? '#22c55e' : '#3a3a3a'" />
+      </g>
+      <text :x="W / 2" y="140" text-anchor="middle" class="rating">{{ device.rating ? `${device.rating}A` : '' }}</text>
+    </template>
+
+    <!-- NEOZED holder: one round screw cap per pole, the fuse indicator in the middle -->
+    <template v-else-if="t === 'neozed'">
+      <g v-for="i in poles" :key="'z' + i" :transform="`translate(${(i - 0.5) * (W / poles)}, 88)`">
+        <circle :r="capR + 3" fill="url(#shoulder)" stroke="#9a9a92" />
+        <circle :r="capR" fill="#3d3d3a" stroke="#1f1f1d" />
+        <circle :r="capR - 4" fill="none" stroke="#55554f" stroke-width="1" />
+        <circle r="4" :fill="neozedColor" stroke="#1f1f1d" stroke-width="0.6" :opacity="energized ? 1 : 0.45" />
       </g>
       <text :x="W / 2" y="140" text-anchor="middle" class="rating">{{ device.rating ? `${device.rating}A` : '' }}</text>
     </template>

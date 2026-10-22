@@ -19,6 +19,7 @@ export const DEVICE_TYPES = [
   'din-socket',
   'afdd',
   'fuse',
+  'neozed',
   'time-relay',
   'impulse-relay',
   'dimmer',
@@ -38,7 +39,7 @@ export type DeviceType = (typeof DEVICE_TYPES)[number]
 export const RCD_TYPES: readonly DeviceType[] = ['rcd', 'rcbo']
 // devices that physically break the circuit and are safe to rely on before touching wires;
 // bus actuators and contactors are software-driven relays and never count as isolation
-export const ISOLATING_TYPES: readonly DeviceType[] = ['mcb', 'rcd', 'rcbo', 'switch', 'afdd', 'fuse']
+export const ISOLATING_TYPES: readonly DeviceType[] = ['mcb', 'rcd', 'rcbo', 'switch', 'afdd', 'fuse', 'neozed']
 export const SMART_TYPES: readonly DeviceType[] = ['actuator', 'bus-psu', 'bus-gateway', 'bus-io']
 
 export const BUS_SYSTEMS = ['knx', 'dali', 'modbus', 'zigbee', 'zwave', 'matter', 'wirenboard', 'other'] as const
@@ -100,6 +101,9 @@ export function defaultWidth(d: Pick<Device, 'type' | 'poles' | 'width'>): numbe
       return d.poles >= 3 ? 4 : 2
     case 'bus':
       return 4
+    // a D02 holder is 27 mm per pole
+    case 'neozed':
+      return d.poles * 1.5
     case 'actuator':
       return d.poles >= 3 ? 4 : d.poles >= 2 ? 4 : 2
     case 'bus-psu':

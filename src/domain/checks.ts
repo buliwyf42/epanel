@@ -33,7 +33,7 @@ export function maxRatingFor(section: number): { nominal: number; tolerated: num
   return best
 }
 
-const OVERCURRENT: readonly Device['type'][] = ['mcb', 'rcbo', 'afdd', 'fuse']
+const OVERCURRENT: readonly Device['type'][] = ['mcb', 'rcbo', 'afdd', 'fuse', 'neozed']
 const INVERTER_PROFILES = new Set(['washer', 'dishwasher', 'cooktop', 'inverter-ac', 'ev'])
 const LEVEL_ORDER: Record<CheckLevel, number> = { error: 0, warn: 1, info: 2 }
 

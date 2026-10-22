@@ -55,7 +55,7 @@ function choose(s: Scenario) {
   else go({ kind: 'pick', scenario: s })
 }
 
-const GUIDE_BY_TYPE: Partial<Record<DeviceType, Guide>> = { mcb: 'mcb', switch: 'mcb', rcd: 'rcd', rcbo: 'rcd', afdd: 'afdd', fuse: 'fuse', 'voltage-relay': 'relay' }
+const GUIDE_BY_TYPE: Partial<Record<DeviceType, Guide>> = { mcb: 'mcb', switch: 'mcb', rcd: 'rcd', rcbo: 'rcd', afdd: 'afdd', fuse: 'fuse', neozed: 'fuse', 'voltage-relay': 'relay' }
 
 function picked(id: string) {
   const d = data.graph?.byId.get(id)

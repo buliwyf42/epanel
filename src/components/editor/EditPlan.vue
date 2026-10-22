@@ -158,7 +158,7 @@ const previewLabel = computed(() => {
 
 const opening = computed(() => (sel.value?.kind === 'opening' ? d.value.plan.openings.find((o) => o.id === sel.value!.id) : undefined))
 const photo = computed(() => (sel.value?.kind === 'photo' ? d.value.photos.find((p) => p.id === sel.value!.id) : undefined))
-const feeders = computed(() => d.value.devices.filter((x) => ['mcb', 'rcbo', 'afdd', 'fuse', 'din-socket', 'switch', 'contactor', 'impulse-relay', 'time-relay', 'dimmer', 'psu', 'ups', 'actuator'].includes(x.type)))
+const feeders = computed(() => d.value.devices.filter((x) => ['mcb', 'rcbo', 'afdd', 'fuse', 'neozed', 'din-socket', 'switch', 'contactor', 'impulse-relay', 'time-relay', 'dimmer', 'psu', 'ups', 'actuator'].includes(x.type)))
 
 function roomAt(x: number, y: number) {
   return d.value.rooms.find((r) => r.polygon.length >= 3 && pointInPolygon(x, y, r.polygon))?.id

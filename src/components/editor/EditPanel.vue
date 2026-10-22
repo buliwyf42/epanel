@@ -42,7 +42,7 @@ function openSlot(row: number, index: number) {
 }
 
 // breakers placed right of an RCD are fed by it, the way panels are usually wired
-const FED_TYPES: DeviceType[] = ['mcb', 'afdd', 'fuse', 'din-socket', 'contactor', 'impulse-relay', 'time-relay', 'dimmer', 'actuator', 'switch']
+const FED_TYPES: DeviceType[] = ['mcb', 'afdd', 'fuse', 'neozed', 'din-socket', 'contactor', 'impulse-relay', 'time-relay', 'dimmer', 'actuator', 'switch']
 
 function add(type: DeviceType) {
   const s = slot.value

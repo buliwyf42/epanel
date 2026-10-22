@@ -16,6 +16,7 @@ export const TYPE_ACCENT: Record<string, string> = {
   'din-socket': '#6b7280',
   afdd: '#be185d',
   fuse: '#a16207',
+  neozed: '#78716c',
   'time-relay': '#0369a1',
   'impulse-relay': '#475569',
   dimmer: '#ca8a04',
