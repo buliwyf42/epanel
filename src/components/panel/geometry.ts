@@ -24,6 +24,7 @@ export const TYPE_ACCENT: Record<string, string> = {
   ups: '#1d4ed8',
   bus: '#b08d2c',
   terminal: '#64748b',
+  'distribution-block': '#78716c',
   actuator: '#16a34a',
   'bus-psu': '#15803d',
   'bus-gateway': '#0f766e',

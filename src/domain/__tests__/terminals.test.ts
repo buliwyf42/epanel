@@ -86,6 +86,9 @@ describe('terminals', () => {
     expect(ats.filter((t) => t.role === 'out')).toHaveLength(4)
     const block = defaultTerminals({ id: 'X', type: 'terminal', poles: 1 } as Parameters<typeof defaultTerminals>[0])
     expect(block.every((t) => t.role === 'bus')).toBe(true)
+    // a distribution block clamps on both faces: half the terminals on top, half below
+    const dist = defaultTerminals({ id: 'XB', type: 'distribution-block', poles: 1 } as Parameters<typeof defaultTerminals>[0])
+    expect(dist.map((t) => t.side)).toEqual(['top', 'top', 'top', 'bottom', 'bottom', 'bottom'])
     // no undefined keys: the YAML export cannot dump them
     expect(defaultTerminals({ id: 'Q', type: 'mcb', poles: 1 } as Parameters<typeof defaultTerminals>[0])[0]).not.toHaveProperty('conductor')
   })

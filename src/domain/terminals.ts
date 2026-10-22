@@ -103,6 +103,9 @@ export function defaultTerminals(d: Device): Terminal[] {
   if (d.type === 'terminal' || d.type === 'bus') {
     return Array.from({ length: 6 }, (_, i) => ({ id: String(i + 1), side: 'top', role: 'bus' }))
   }
+  if (d.type === 'distribution-block') {
+    return Array.from({ length: 6 }, (_, i) => ({ id: String(i + 1), side: i < 3 ? 'top' : 'bottom', role: 'bus' }))
+  }
   const cond = conductorsFor(d)
   // undefined keys would reach the YAML export, which cannot dump them
   const opt = (c: Terminal['conductor'] | undefined, group?: string) => ({ ...(c ? { conductor: c } : {}), ...(group ? { group } : {}) })
