@@ -79,7 +79,8 @@ const upstreamOptions = computed(() => {
       }
     }
   }
-  return d.value.devices.filter((x) => !banned.has(x.id) && x.type !== 'bus' && x.type !== 'terminal')
+  // terminal blocks distribute a feed to several devices, so they are valid feeders; busbars stay out
+  return d.value.devices.filter((x) => !banned.has(x.id) && x.type !== 'bus')
 })
 
 function circuit() {
