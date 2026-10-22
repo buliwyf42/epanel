@@ -24,6 +24,7 @@ The interface is available in Russian, English, Serbian (Latin) and Spanish, wit
 - **Something tripped.** A step-by-step guide: part of the flat, an RCD, the whole flat, voltage swings, a burning smell. Meters and breakers outside the flat (for example in the floor box on the landing) come with directions to find them. Contacts with a call button.
 - **Checks.** Cable size against breaker rating, circuit load with diversity factors, selectivity, cascaded RCDs, wet rooms, RCD type for inverter appliances, supply capacity, phase balance, bus addresses and bus power.
 - **Single-line diagram,** built automatically.
+- **Terminals and wiring.** Each device can list its terminals (id as printed, top or bottom, input, output or through, conductor, wire colour and cross-section) and pick from a dropdown what each one is wired to. The feeder follows from those links; a changeover switch has a position (I, II or 0). A check flags links whose two ends name different conductors.
 - **Smart home.** KNX, DALI, Modbus, Zigbee, Z-Wave, Matter / Thread, Wiren Board: physical addresses, actuator channels, group addresses, room panels.
 - **Networks and conduits.** Ethernet, HDMI, coax, empty conduits with a pull string: where every cable goes.
 - **Maintenance.** A schedule (RCD test, terminal re-torque, meter readings) with a log under each task. The editor suggests a task as soon as a matching device is added.
