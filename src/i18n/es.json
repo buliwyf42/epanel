@@ -793,7 +793,12 @@
       "file": "desde un archivo",
       "new": "proyecto nuevo",
       "preview": "Vista previa del editor"
-    }
+    },
+    "panelTitle": "Vista del cuadro",
+    "showScrews": "Tornillos de los bornes",
+    "showScrewsHint": "Dibujar los tornillos encima y debajo de cada dispositivo: según lo introducido o, si no, el juego estándar según los polos.",
+    "showTerminalIds": "Nombres de bornes",
+    "showTerminalIdsHint": "Mostrar los nombres de los bornes junto a los tornillos."
   },
   "editor": {
     "title": "Editor",

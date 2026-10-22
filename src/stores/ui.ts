@@ -12,6 +12,9 @@ export const useUi = defineStore('ui', () => {
   // a per-device convenience: losing it to a private window only means the sidebar opens wide
   const sidebarCollapsed = useLocalStorage('sidebar-collapsed', false)
   const panelView = useLocalStorage<'visual' | 'list'>('panel-view', 'visual')
+  // drawing details of the panel view, per viewer like the view mode
+  const showScrews = useLocalStorage('panel-screws', true)
+  const showTerminalIds = useLocalStorage('panel-terminal-ids', true)
 
   const filterTypes = ref<DeviceType[]>([])
   const filterRoom = ref<string | null>(null)
@@ -105,6 +108,8 @@ export const useUi = defineStore('ui', () => {
   }
 
   return {
+    showScrews,
+    showTerminalIds,
     selectedDevice,
     selectedPoint,
     hoverDevice,

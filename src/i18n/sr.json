@@ -793,7 +793,12 @@
       "file": "iz fajla",
       "new": "novi projekat",
       "preview": "Pregled iz editora"
-    }
+    },
+    "panelTitle": "Prikaz table",
+    "showScrews": "Zavrtnji klema",
+    "showScrewsHint": "Prikaži zavrtnje iznad i ispod svakog uređaja: kako su uneti, inače standardni raspored po broju polova.",
+    "showTerminalIds": "Oznake klema",
+    "showTerminalIdsHint": "Prikaži oznake klema pored zavrtanja."
   },
   "editor": {
     "title": "Uređivač",

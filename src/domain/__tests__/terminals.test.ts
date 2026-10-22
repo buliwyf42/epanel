@@ -116,3 +116,20 @@ describe('terminal block colour', async () => {
     expect(blockColor({ terminals: [] })).toBeUndefined()
   })
 })
+
+describe('shown terminals', async () => {
+  const { shownTerminals } = await import('../terminals')
+  type Dev = Parameters<typeof shownTerminals>[0]
+  const side = (d: Dev) => {
+    const ts = shownTerminals(d)
+    return `${ts.filter((x) => x.side === 'top').length}/${ts.filter((x) => x.side === 'bottom').length}`
+  }
+  it('draws entered terminals, else the standard set for pole-based types, else none', () => {
+    expect(side({ id: 'Q', type: 'rcd', poles: 4, terminals: [] } as unknown as Dev)).toBe('4/4')
+    expect(side({ id: 'Q', type: 'mcb', poles: 3, terminals: [] } as unknown as Dev)).toBe('3/3')
+    expect(side({ id: 'S', type: 'ats', poles: 4, terminals: [] } as unknown as Dev)).toBe('8/4')
+    expect(side({ id: 'X', type: 'other', poles: 1, terminals: [] } as unknown as Dev)).toBe('0/0')
+    const own = [{ id: '1', side: 'top', role: 'in' }] as Dev['terminals']
+    expect(side({ id: 'Q', type: 'mcb', poles: 3, terminals: own } as unknown as Dev)).toBe('1/0')
+  })
+})

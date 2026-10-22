@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router'
 import { CircleHelp, LockKeyhole, Monitor, Moon, RefreshCw, Sun, Trash2 } from '@lucide/vue'
 import { toast } from 'vue-sonner'
 import { Button } from '@/components/ui/button'
+import { Switch } from '@/components/ui/switch'
+import { useUi } from '@/stores/ui'
 import { LOCALES } from '@/domain/model'
 import { LOCALE_NAMES, setLocale } from '@/i18n'
 import { applyUpdate, needRefresh, offlineReady } from '@/composables/usePwa'
@@ -18,6 +20,7 @@ const router = useRouter()
 const { t, locale } = useText()
 const { mode } = useTheme()
 const tour = useTour()
+const ui = useUi()
 function resetTours() {
   tour.reset()
   toast.success(t('tour.resetDone'))
@@ -82,6 +85,26 @@ async function discard() {
           >
             <component :is="th.icon" class="size-4" /> {{ t(`settings.theme.${th.id}`) }}
           </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mb-2 text-sm font-semibold">{{ t('settings.panelTitle') }}</h2>
+        <div class="divide-y rounded-2xl border bg-card">
+          <label class="flex items-center justify-between gap-4 p-4">
+            <div>
+              <div class="text-sm font-medium">{{ t('settings.showScrews') }}</div>
+              <div class="text-xs text-muted-foreground">{{ t('settings.showScrewsHint') }}</div>
+            </div>
+            <Switch v-model="ui.showScrews" />
+          </label>
+          <label class="flex items-center justify-between gap-4 p-4">
+            <div>
+              <div class="text-sm font-medium">{{ t('settings.showTerminalIds') }}</div>
+              <div class="text-xs text-muted-foreground">{{ t('settings.showTerminalIdsHint') }}</div>
+            </div>
+            <Switch v-model="ui.showTerminalIds" />
+          </label>
         </div>
       </div>
 

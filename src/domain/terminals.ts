@@ -88,6 +88,16 @@ function conductorsFor(d: Device): (Terminal['conductor'] | undefined)[] {
   }
 }
 
+// devices whose terminals follow their poles closely enough to draw them without a list
+const POLE_LAYOUT_TYPES: readonly Device['type'][] = ['mcb', 'rcd', 'rcbo', 'afdd', 'switch', 'fuse', 'meter', 'contactor', 'ats']
+
+// what the panel draws: the entered terminals, else the standard set for pole-based types, else nothing (one screw
+// per module then)
+export function shownTerminals(d: Device): Terminal[] {
+  if (d.terminals.length) return d.terminals
+  return POLE_LAYOUT_TYPES.includes(d.type) ? defaultTerminals(d) : []
+}
+
 // terminal layout as most DIN devices print it: odd numbers on the supply side, even on the load side
 export function defaultTerminals(d: Device): Terminal[] {
   if (d.type === 'terminal' || d.type === 'bus') {

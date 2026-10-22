@@ -793,7 +793,12 @@
       "file": "from a file",
       "new": "new project",
       "preview": "Preview from the editor"
-    }
+    },
+    "panelTitle": "Panel view",
+    "showScrews": "Terminal screws",
+    "showScrewsHint": "Draw the screws above and below each device: as entered, else the standard set for its poles.",
+    "showTerminalIds": "Terminal ids",
+    "showTerminalIdsHint": "Print the terminal ids next to the screws."
   },
   "editor": {
     "title": "Editor",
