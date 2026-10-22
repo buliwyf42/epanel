@@ -50,6 +50,9 @@ const sideCount = (side: 'top' | 'bottom') => props.device.terminals.filter((x) 
 const screwsTop = computed(() => (props.device.terminals.length ? sideCount('top') : perModule.value))
 const screwsBottom = computed(() => (props.device.terminals.length ? sideCount('bottom') : perModule.value))
 const screwX = (i: number, n: number) => (i + 0.5) * (W.value / n)
+// terminal ids printed next to their screws, in the same order the screws are drawn
+const labelsTop = computed(() => props.device.terminals.filter((x) => x.side === 'top').map((x) => x.id))
+const labelsBottom = computed(() => props.device.terminals.filter((x) => x.side === 'bottom').map((x) => x.id))
 
 // terminal block: a coloured housing with a grid of clamp points, top-side terminals in the upper rows
 const blockFill = computed(() => {
@@ -119,6 +122,8 @@ const busColor = computed(() => {
         <line :x1="screwX(i - 1, screwsTop) - 5" y1="16" :x2="screwX(i - 1, screwsTop) + 5" y2="16" stroke="#55554f" stroke-width="1.6" />
         <circle v-if="energized" :cx="screwX(i - 1, screwsTop)" cy="16" r="3" fill="var(--live)" class="live-dot" />
       </g>
+      <text v-for="(l, i) in labelsTop" :key="'tl' + i" :x="screwX(i, screwsTop)" y="37" text-anchor="middle" class="tlabel">{{ l }}</text>
+      <text v-for="(l, i) in labelsBottom" :key="'bl' + i" :x="screwX(i, screwsBottom)" :y="HEIGHT - 31" text-anchor="middle" class="tlabel">{{ l }}</text>
       <g v-for="i in screwsBottom" :key="'b' + i">
         <circle :cx="screwX(i - 1, screwsBottom)" :cy="HEIGHT - 16" r="7" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.8" />
         <line :x1="screwX(i - 1, screwsBottom) - 5" :y1="HEIGHT - 16" :x2="screwX(i - 1, screwsBottom) + 5" :y2="HEIGHT - 16" stroke="#55554f" stroke-width="1.6" />
@@ -407,6 +412,12 @@ text {
 }
 .seg.off {
   fill: #2f4f3a;
+}
+.tlabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 7px;
+  font-weight: 600;
+  fill: #55554f;
 }
 .busl {
   font-size: 14px;
