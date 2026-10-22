@@ -14,7 +14,7 @@ function initialLocale(): Locale {
   return LOCALES.includes(nav) ? nav : 'ru'
 }
 
-export const LOCALE_NAMES: Record<Locale, string> = { ru: 'Русский', en: 'English', sr: 'Srpski', es: 'Español' }
+export const LOCALE_NAMES: Record<Locale, string> = { ru: 'Русский', en: 'English', sr: 'Srpski', es: 'Español', de: 'Deutsch' }
 
 // one locale per visit: CI checks every locale has every key, so there is no fallback to download
 const messages: Record<Locale, () => Promise<{ default: unknown }>> = {
@@ -22,6 +22,7 @@ const messages: Record<Locale, () => Promise<{ default: unknown }>> = {
   en: () => import('./en.json'),
   sr: () => import('./sr.json'),
   es: () => import('./es.json'),
+  de: () => import('./de.json'),
 }
 
 export const i18n = createI18n({
