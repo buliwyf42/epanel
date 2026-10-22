@@ -4,7 +4,7 @@ import type { Device, LocalizedText, PanelData, Route } from './schema'
 
 export type { LocalizedText, Channel, Smart, Note, Circuit, Device, RowItem, Row, Point2, Room, PlanPoint, Cable, Route, Photo, MaintenanceTask, MaintenanceLog, DocumentRef, Contact, Opening, Plan, PanelData, PanelInput } from './schema'
 
-export const LOCALES = ['ru', 'en', 'sr', 'es'] as const
+export const LOCALES = ['ru', 'en', 'sr', 'es', 'de'] as const
 export type Locale = (typeof LOCALES)[number]
 
 export const DEVICE_TYPES = [

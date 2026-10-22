@@ -1,0 +1,1466 @@
+{
+  "app": {
+    "name": "Verteiler",
+    "tagline": "Interaktiver Verteilerplan"
+  },
+  "common": {
+    "loading": "Wird geladen …",
+    "back": "Zurück",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "add": "Hinzufügen",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "noRoom": "Kein Raum",
+    "done": "Fertig"
+  },
+  "units": {
+    "m2": "m²",
+    "mm2": "mm²",
+    "m": "m",
+    "cm": "cm",
+    "mm": "mm",
+    "kw": "kW",
+    "days": "Tage"
+  },
+  "nav": {
+    "panel": "Verteiler",
+    "plan": "Grundriss",
+    "find": "Was abschalten?",
+    "emergency": "Etwas hat ausgelöst",
+    "schema": "Übersichtsschaltplan",
+    "checks": "Prüfungen",
+    "smart": "Smart Home",
+    "maintenance": "Wartung",
+    "photos": "Fotos & Dokumente",
+    "labels": "Beschriftung & QR",
+    "edit": "Editor",
+    "settings": "Einstellungen",
+    "more": "Mehr",
+    "group": {
+      "main": "Allgemein",
+      "engineering": "Technik",
+      "service": "Service",
+      "manage": "Verwalten",
+      "editor": "Editor",
+      "review": "Prüfen",
+      "finish": "Abschluss"
+    },
+    "short": {
+      "panel": "Verteiler",
+      "plan": "Plan",
+      "find": "Suchen",
+      "emergency": "Ausgelöst"
+    },
+    "network": "Netzwerk & Leerrohre",
+    "leave": "Zum Start",
+    "leaveUnsaved": "Nicht gespeicherte Änderungen gehen verloren. Falls du sie brauchst, speichere die Datei zuerst im Editor. Zurück zum Startbildschirm?",
+    "collapse": "Seitenleiste einklappen",
+    "expand": "Seitenleiste ausklappen",
+    "preview": "Vorschau als Kunde"
+  },
+  "banner": {
+    "demo": "Dies ist eine Demo-Wohnung. Die Daten sind erfunden, Änderungen werden nirgends gespeichert.",
+    "draft": "Es gibt unveröffentlichte Änderungen, angezeigt wird ein Entwurf.",
+    "draftAction": "Veröffentlichen",
+    "leaveDemo": "Demo verlassen"
+  },
+  "search": {
+    "open": "Suchen",
+    "placeholder": "Automat, Raum, Steckdose, Gerät …",
+    "placeholderShort": "Suchen",
+    "empty": "Nichts gefunden",
+    "room": "Raum"
+  },
+  "unlock": {
+    "title": "Passwort erforderlich",
+    "subtitle": "Die Wohnungsdaten sind verschlüsselt. Zum Öffnen das Passwort eingeben.",
+    "password": "Passwort",
+    "show": "Passwort anzeigen",
+    "hide": "Passwort verbergen",
+    "remember": "Auf diesem Gerät merken",
+    "submit": "Öffnen",
+    "wrong": "Falsches Passwort",
+    "hint": "Das Passwort steckt im QR-Code an der Verteilertür. Mit der Kamera scannen, dann öffnet sich die Seite von selbst.",
+    "demo": "Demo-Wohnung ansehen"
+  },
+  "start": {
+    "title": "Noch keine Daten",
+    "titleDesktop": "Verteiler-Editor",
+    "subtitle": "Eine Datei vom Elektriker öffnen, einen Verteiler neu erfassen oder die Demo ansehen.",
+    "open": "Datei öffnen",
+    "openHint": ".panel, .json oder .yaml: was der Elektriker geschickt hat",
+    "create": "Neuen Verteiler anlegen",
+    "createHint": "Leeres Projekt: Reihen, Automaten, Grundriss",
+    "demo": "Demo öffnen",
+    "demoHint": "Zweizimmerwohnung, 28 Geräte, 51 Punkte",
+    "name": "Name",
+    "defaultTitle": "Meine Wohnung",
+    "password": "Passwort",
+    "passwordRepeat": "Passwort wiederholen",
+    "passwordHint": "Das Passwort verschlüsselt alle Daten. Ohne es lässt sich die Datei nicht öffnen, und es kann nicht wiederhergestellt werden.",
+    "passwordMismatch": "Passwörter stimmen nicht überein oder sind kürzer als 10 Zeichen",
+    "createSubmit": "Anlegen",
+    "encrypted": "„{name}“ ist verschlüsselt. Passwort eingeben.",
+    "invalid": "Datei konnte nicht gelesen werden",
+    "replaceDraft": "„{name}“ öffnen? Nicht gespeicherte Änderungen im Entwurf gehen verloren."
+  },
+  "device": {
+    "type": {
+      "mcb": "Leitungsschutzschalter",
+      "rcd": "FI-Schutzschalter",
+      "rcbo": "FI/LS-Schalter",
+      "voltage-relay": "Spannungswächter",
+      "spd": "Überspannungsschutz",
+      "meter": "Energiezähler",
+      "switch": "Hauptschalter",
+      "contactor": "Schütz",
+      "din-socket": "Hutschienen-Steckdose",
+      "bus": "Sammelschiene",
+      "terminal": "Klemmblock",
+      "actuator": "Bus-Aktor",
+      "bus-psu": "Bus-Spannungsversorgung",
+      "bus-gateway": "Bus-Gateway",
+      "bus-io": "Binäreingang",
+      "other": "Sonstiges",
+      "afdd": "Brandschutzschalter",
+      "fuse": "Sicherung",
+      "time-relay": "Zeitschaltuhr",
+      "impulse-relay": "Stromstoßschalter",
+      "dimmer": "Dimmer",
+      "psu": "Netzteil 12/24 V",
+      "ats": "Automatischer Umschalter",
+      "ups": "USV"
+    },
+    "typeShort": {
+      "mcb": "LS",
+      "rcd": "FI",
+      "rcbo": "FI/LS",
+      "voltage-relay": "U-Wächter",
+      "spd": "ÜSS",
+      "meter": "Zähler",
+      "switch": "Schalter",
+      "contactor": "Schütz",
+      "din-socket": "Steckdose",
+      "bus": "Schiene",
+      "terminal": "Klemmen",
+      "actuator": "Aktor",
+      "bus-psu": "Bus-NT",
+      "bus-gateway": "Gateway",
+      "bus-io": "Eingänge",
+      "other": "Sonstiges",
+      "afdd": "AFDD",
+      "fuse": "Sicherung",
+      "time-relay": "Zeituhr",
+      "impulse-relay": "Stromstoß",
+      "dimmer": "Dimmer",
+      "psu": "NT 12/24 V",
+      "ats": "Umschalter",
+      "ups": "USV"
+    },
+    "field": {
+      "rating": "Nennstrom",
+      "poles": "Polzahl",
+      "leakage": "Fehlerstrom",
+      "class": "Typ",
+      "cable": "Leitung",
+      "section": "Querschnitt",
+      "length": "Leitungslänge",
+      "model": "Modell",
+      "phase": "Phase",
+      "rcd": "FI-Schutz",
+      "serial": "Seriennummer"
+    },
+    "place": "Reihe {row}, Nr. {pos} von links",
+    "showOnPlan": "Im Plan",
+    "simulate": "Was wird dunkel?",
+    "specs": "Technische Daten",
+    "load": "Last",
+    "loadHint": "Geschätzter Bedarf {demand} kW von {nameplate} kW Anschlussleistung (mit Gleichzeitigkeit).",
+    "powers": "Versorgte Punkte: {n}",
+    "fedFrom": "Gespeist von",
+    "feeds": "Speist",
+    "notes": "Notizen",
+    "addNote": "Notiz hinzufügen",
+    "noteAuthor": "Dein Name",
+    "notePlaceholder": "Z. B. „Steckdose am Fenster gegen Doppelsteckdose getauscht“",
+    "noteDraftHint": "Landet im Entwurf. Im Editor veröffentlichen, damit alle sie sehen.",
+    "anonymous": "Anonym",
+    "noNotes": "Noch keine Notizen.",
+    "typeHint": {
+      "mcb": "Schützt einen Stromkreis vor Überlast und Kurzschluss",
+      "rcd": "Löst bei Fehlerstrom aus und schützt Personen. Sitzt vor den Automaten",
+      "rcbo": "Automat und FI in einem Gehäuse, für einen einzelnen Stromkreis",
+      "voltage-relay": "Trennt die Wohnung bei Spannungsschwankungen im Netz",
+      "spd": "Leitet Überspannungen durch Blitz und Schalthandlungen im Netz ab",
+      "meter": "Misst den Energieverbrauch",
+      "switch": "Manuelles Freischalten des ganzen Verteilers oder einer Gruppe",
+      "contactor": "Schaltet eine Last per Signal: Zeitschaltuhr, Thermostat, Smart Home",
+      "din-socket": "Steckdose im Verteiler, für Router oder Ladegerät",
+      "bus": "N- oder PE-Schiene, Phasenschiene",
+      "terminal": "Hutschienen-Klemmen zum Verbinden von Leitern",
+      "actuator": "Schaltaktor am Smart-Home-Bus: Licht, Rollläden, Heizung",
+      "bus-psu": "Versorgt einen KNX- oder DALI-Bus",
+      "bus-gateway": "Verbindet den Bus mit Netzwerk und App",
+      "bus-io": "Nimmt Signale von Tastern und Sensoren auf",
+      "other": "Alles, was nicht in dieser Liste steht",
+      "afdd": "Trennt den Stromkreis bei Störlichtbögen: lockerer Kontakt, beschädigte Leitung",
+      "fuse": "Schmelzeinsatz im Halter. Brennt bei Überlast durch, nur durch gleichen Nennstrom ersetzen",
+      "time-relay": "Schaltet eine Last nach Zeitplan: Boiler, Beleuchtung, Handtuchheizkörper",
+      "impulse-relay": "Licht, das über Taster von mehreren Stellen geschaltet wird",
+      "dimmer": "Regelt die Helligkeit stufenlos",
+      "psu": "Versorgt LED-Streifen, Sensoren, Kleinspannungsgeräte",
+      "ats": "Schaltet die Wohnung bei Ausfall auf eine zweite Einspeisung oder einen Generator um",
+      "ups": "Hält Router, Heizkessel oder Pumpe bei Stromausfall per Akku in Betrieb"
+    }
+  },
+  "point": {
+    "kind": {
+      "socket": "Steckdose",
+      "light": "Leuchte",
+      "switch": "Schalter",
+      "appliance": "Gerät",
+      "heating": "Heizung",
+      "ac": "Klimaanlage",
+      "junction": "Abzweigdose",
+      "network": "Router, Medienverteiler",
+      "panel": "Bedienpanel",
+      "sensor": "Sensor",
+      "other": "Punkt",
+      "data": "Datendose"
+    },
+    "kinds": {
+      "socket": "Steckdosen",
+      "light": "Leuchten",
+      "switch": "Schalter",
+      "appliance": "Geräte",
+      "heating": "Heizung",
+      "ac": "Klimaanlagen",
+      "junction": "Dosen & Verteiler",
+      "network": "Schwachstrom",
+      "panel": "Bedienpanels",
+      "sensor": "Sensoren",
+      "other": "Sonstiges",
+      "data": "Datendosen"
+    },
+    "profile": {
+      "generic": "Allgemeines Gerät",
+      "washer": "Waschmaschine",
+      "dishwasher": "Geschirrspüler",
+      "oven": "Backofen",
+      "cooktop": "Kochfeld",
+      "fridge": "Kühlschrank",
+      "boiler": "Warmwasserbereiter",
+      "inverter-ac": "Inverter-Klimaanlage",
+      "floor-heating": "Fußbodenheizung",
+      "ev": "Wallbox"
+    },
+    "height": "{mm} mm über dem Boden",
+    "concealed": "Verdeckt hinter der Oberfläche"
+  },
+  "panel": {
+    "title": "Verteiler",
+    "view": {
+      "label": "Verteileransicht",
+      "visual": "Verteiler",
+      "list": "Liste"
+    },
+    "stat": {
+      "groups": "Stromkreise",
+      "rcds": "FI & FI/LS",
+      "points": "Punkte",
+      "modules": "TE belegt",
+      "errors": "Fehler",
+      "warnings": "Warnungen"
+    },
+    "allRooms": "Alle Räume",
+    "allTags": "Alle Tags",
+    "onlyIssues": "Mit Befunden",
+    "clearFilters": "Zurücksetzen",
+    "simulate": "Simulation",
+    "zoom": "Zoom",
+    "simHint": "Geräte antippen, um sie „abzuschalten“, und sehen, was stromlos wird.",
+    "simStatus": "Abgeschaltete Geräte: {devices}. Stromlose Punkte: {points}.",
+    "simShowPlan": "Im Plan",
+    "simReset": "Alles einschalten",
+    "legend": {
+      "on": "Anzeige: ein",
+      "off": "Anzeige: aus",
+      "live": "unter Spannung",
+      "issue": "hat einen Befund",
+      "tap": "Gerät antippen für Details"
+    },
+    "pickHint": "Einen Automaten im Verteiler wählen, um zu sehen, was er versorgt, seine Last und Notizen.",
+    "details": "Gerätedetails",
+    "types": "Gerätetypen",
+    "outside": {
+      "title": "Außerhalb des Verteilers",
+      "account": "Kundennummer:"
+    }
+  },
+  "plan": {
+    "layers": "Ebenen",
+    "layer": {
+      "routes": "Leitungen & Bohrverbotszonen",
+      "bus": "Smart-Home-Bus",
+      "photos": "Wandfotos",
+      "labels": "Automatenbeschriftung",
+      "background": "Planvorlage",
+      "lowvoltage": "Schwachstrom & Leerrohre",
+      "dimensions": "Maße"
+    },
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "fit": "Einpassen",
+    "hint": "Steckdose oder Gerät antippen, um zu sehen, welcher Automat abschaltet",
+    "sideHint": "Einen Punkt im Plan antippen, um zu sehen, welcher Automat ihn freischaltet. Einen Raum antippen für seine Stromkreise.",
+    "simHint": "Simulation: Punkte antippen, um ihren Automaten abzuschalten.",
+    "simStatus": "Stromlose Punkte: {n}. Abgeschaltet:",
+    "deviceHighlight": "Hervorgehobene Punkte: {n}",
+    "roomDevices": "Stromkreise in diesem Raum",
+    "wet": "Nassbereich"
+  },
+  "find": {
+    "title": "Was abschalten?",
+    "subtitle": "Steckdose, Leuchte oder Gerät suchen – die App zeigt, welcher Automat abgeschaltet werden muss.",
+    "placeholder": "Z. B. Steckdose am Bett, Boiler, Licht im Bad",
+    "pickRoom": "Oder einen Raum wählen",
+    "pointsCount": "Punkte: {n}",
+    "switchOff": "Abschalten",
+    "unknown": "Dieser Punkt ist keinem Automaten zugeordnet. Sicherheitshalber den Hauptschalter ausschalten.",
+    "alsoCuts": "Auch abgeschaltet durch:",
+    "openInPanel": "Im Verteiler zeigen",
+    "everything": "Ganze Wohnung stromlos schalten",
+    "everythingHint": "Hauptschalter",
+    "controlledBy": "Gesteuert über",
+    "controlledByHint": "Das ist ein Smart-Home-Relais und trennt den Stromkreis nicht sicher. Vor Arbeiten an Leitungen den vorgeschalteten Automaten ausschalten."
+  },
+  "emergency": {
+    "title": "Etwas hat ausgelöst",
+    "subtitle": "Ein paar Fragen beantworten, dann klären wir, was zu tun ist.",
+    "scenario": {
+      "partial": {
+        "title": "Ein Teil der Wohnung ist dunkel",
+        "hint": "Steckdosen oder Licht funktionieren in ein oder zwei Räumen nicht mehr"
+      },
+      "rcd": {
+        "title": "Ein FI oder FI/LS hat ausgelöst",
+        "hint": "Ein blauer oder violetter Hebel mit „T“-Taste steht unten"
+      },
+      "all": {
+        "title": "Alles ist dunkel",
+        "hint": "In der ganzen Wohnung funktioniert nichts"
+      },
+      "flicker": {
+        "title": "Licht flackert, Geräte schalten sich von selbst aus und ein",
+        "hint": "Sieht nach Spannungsschwankungen aus"
+      },
+      "smell": {
+        "title": "Brandgeruch, Funken, heißer Verteiler",
+        "hint": "Gefährlich: sofort handeln"
+      }
+    },
+    "pick": "Im Verteiler den Hebel suchen, der unten steht, und dieses Gerät auf dem Bild antippen:",
+    "pickRcd": "Welcher FI oder FI/LS hat ausgelöst? Auf dem Bild antippen:",
+    "pickHint": "Hebel unten und grüne Anzeige im Fenster bedeutet: aus.",
+    "guide": {
+      "mcb": {
+        "title": "Ein Automat hat ausgelöst",
+        "why": "Ein Automat löst bei Überlast aus (zu viele leistungsstarke Geräte an einem Stromkreis) oder bei Kurzschluss (defektes Gerät oder defekte Leitung).",
+        "steps": [
+          "Leistungsstarke Geräte an diesem Stromkreis ausstecken: Wasserkocher, Heizlüfter, Bügeleisen, Föhn.",
+          "Den Hebel des Automaten nach oben drücken, bis er einrastet.",
+          "Bleibt er drin, die Geräte einzeln wieder einstecken, nicht alle auf einmal.",
+          "Löst er sofort wieder aus, obwohl nichts eingesteckt ist, liegt ein Kurzschluss vor. Ausgeschaltet lassen und einen Elektriker rufen.",
+          "Löst er beim Einschalten eines bestimmten Geräts aus, ist dieses Gerät defekt."
+        ]
+      },
+      "rcd": {
+        "title": "Ein FI hat ausgelöst",
+        "why": "Ein FI trennt den Stromkreis bei Fehlerstrom: Feuchtigkeit, beschädigte Isolierung, defektes Gerät. Er schützt vor Stromschlag, also nicht ignorieren.",
+        "steps": [
+          "Alle Geräte an den Stromkreisen hinter diesem FI ausstecken (Liste unten).",
+          "Den Hebel des FI nach oben drücken.",
+          "Bleibt er drin, die Geräte einzeln wieder einschalten, zuerst die Verdächtigen: Waschmaschine, Boiler, Wasserkocher, alles in der Nähe von Wasser.",
+          "Das Gerät, bei dem der FI auslöst, ist defekt. Nicht mehr benutzen.",
+          "Löst der FI auch aus, wenn alles ausgesteckt ist, liegt das Problem in der Installation. Einen Elektriker rufen."
+        ]
+      },
+      "relay": {
+        "title": "Der Spannungswächter hat ausgelöst",
+        "why": "Der Wächter trennt die Wohnung, wenn die Netzspannung den sicheren Bereich verlässt, und schützt so die Geräte vor Überspannung.",
+        "steps": [
+          "Die Spannung auf der Anzeige des Wächters ablesen.",
+          "Abwarten: Sobald die Spannung wieder normal ist, schaltet der Wächter selbst wieder ein, meist nach 30 bis 60 Sekunden.",
+          "Keine anderen Automaten umlegen und den Wächter nicht überbrücken.",
+          "Passiert das häufig, die Hausverwaltung informieren: Das Problem liegt in der Versorgung des Gebäudes."
+        ]
+      },
+      "all": {
+        "title": "Die ganze Wohnung ist dunkel",
+        "why": "Drei mögliche Ursachen: Der Hauptschalter hat ausgelöst, der Spannungswächter hat ausgelöst oder das ganze Gebäude hat keinen Strom.",
+        "steps": [
+          "Prüfen, ob Nachbarn und Treppenhaus Licht haben. Wenn nicht, ist es ein Ausfall im Gebäude: die Hausverwaltung anrufen.",
+          "Auf den Spannungswächter schauen. Striche oder blinkende Ziffern bedeuten: abwarten, er schaltet selbst wieder ein.",
+          "Steht der Hauptschalter unten, leistungsstarke Geräte ausstecken und ihn hochdrücken.",
+          "Ist im Wohnungsverteiler alles eingeschaltet, die Sicherung am Zähler prüfen. Sie sitzt oft im Zählerschrank im Treppenhaus.",
+          "Löst der Hauptschalter erneut aus, nicht weiter probieren. Einen Elektriker rufen."
+        ]
+      },
+      "other": {
+        "title": "Dieses Gerät „löst“ normalerweise nicht aus",
+        "why": "Vermutlich wurde das falsche Gerät gewählt. Den Hebel suchen, der an einem Automaten, FI oder FI/LS unten steht.",
+        "steps": [
+          "Zurückgehen und den Automaten wählen, dessen Hebel unten steht.",
+          "Steht kein Hebel unten, den Spannungswächter prüfen."
+        ]
+      },
+      "afdd": {
+        "title": "Der Brandschutzschalter hat ausgelöst",
+        "why": "Ein Brandschutzschalter trennt den Stromkreis bei Störlichtbögen: lockerer Kontakt in Steckdose oder Dose, beschädigte Leitung, defekte Verlängerung. Das ist eine Brandwarnung.",
+        "steps": [
+          "Alles an diesem Stromkreis ausstecken, besonders Verlängerungen und alte Ladegeräte.",
+          "Den Hebel wieder nach oben drücken.",
+          "Bleibt er drin, die Geräte einzeln wieder einstecken und beobachten, bei welchem er auslöst.",
+          "Löst er auch ohne eingesteckte Geräte aus oder immer wieder, ausgeschaltet lassen und einen Elektriker rufen: Irgendwo ist ein schlechter Kontakt."
+        ]
+      },
+      "fuse": {
+        "title": "Eine Sicherung ist durchgebrannt",
+        "why": "Ein Schmelzeinsatz schmilzt bei Überlast oder Kurzschluss. Er schaltet nicht von selbst wieder ein.",
+        "steps": [
+          "Große Verbraucher an diesem Stromkreis ausschalten.",
+          "Den Halter öffnen und den Einsatz herausnehmen. Ein durchgebrannter hat ein dunkles Fenster oder eine nicht leuchtende Anzeige.",
+          "Einen neuen Einsatz mit gleichem Nennstrom einsetzen, er steht auf dem Gehäuse.",
+          "Nie einen höheren Nennstrom einsetzen und nie durch Draht ersetzen.",
+          "Brennt der neue sofort durch, liegt ein Kurzschluss vor. Einen Elektriker rufen."
+        ]
+      }
+    },
+    "rcdLines": "Stromkreise hinter diesem FI",
+    "suspects": "Die leistungsstärksten Geräte an diesem Stromkreis",
+    "suspectsLeak": "Diese Geräte zuerst prüfen",
+    "danger": {
+      "title": "Gefahr: sofort handeln",
+      "s1": "Wenn es gefahrlos möglich ist, den Hauptschalter ausschalten",
+      "s2": "Den Verteiler nicht mit nassen Händen berühren und bei Rauch nicht öffnen.",
+      "s3": "Bei Rauch oder Feuer die Wohnung verlassen und die Tür schließen.",
+      "s4": "112 anrufen und einen Elektrobrand melden."
+    },
+    "never": "Niemals einen Hebel von Hand oben halten, damit er „drin bleibt“, und niemals Automaten festkleben. Das schaltet den Schutz vor Brand und Stromschlag aus.",
+    "contacts": "Wen anrufen",
+    "q": {
+      "what": "Was ist passiert?",
+      "neighbours": "Haben Nachbarn und Treppenhaus Strom?"
+    },
+    "a": {
+      "neighboursYes": "Ja, bei ihnen geht es",
+      "neighboursNo": "Nein, dort ist es auch dunkel"
+    },
+    "notFound": "Ich sehe keinen Hebel unten",
+    "stepOf": "Schritt {n} von {total}",
+    "next": "Erledigt, weiter",
+    "fixed": "Strom ist wieder da",
+    "notHelped": "Hat nicht geholfen",
+    "restart": "Neu beginnen",
+    "done": {
+      "title": "Gut, alles funktioniert",
+      "text": "Löst es wieder aus, die Fragen noch einmal durchgehen. Passiert es öfter, den Verteiler von einem Elektriker prüfen lassen."
+    },
+    "stuck": {
+      "title": "Das hat nicht geholfen",
+      "text": "Das Gerät ausgeschaltet lassen und nicht mit Gewalt wieder einschalten. Jemanden anrufen, der es beheben kann:"
+    },
+    "outage": {
+      "title": "Offenbar ist das ganze Gebäude ohne Strom",
+      "text": "Der Verteiler ist nicht das Problem. Die Hausverwaltung anrufen. Währenddessen leistungsstarke Geräte ausstecken, damit sie bei der Rückkehr des Stroms keine Spannungsspitze abbekommen."
+    },
+    "outside": {
+      "title": "Zähler und Sicherung außerhalb der Wohnung",
+      "hint": "Ist im Wohnungsverteiler alles eingeschaltet, die Nachbarn haben aber Strom, hier die Sicherung prüfen.",
+      "callHint": "Die Störungsstelle fragt nach der Zähler- oder Kundennummer."
+    }
+  },
+  "contact": {
+    "role": {
+      "electrician": "Elektriker",
+      "management": "Hausverwaltung",
+      "emergency": "Notdienst",
+      "utility": "Netzbetreiber",
+      "other": "Kontakt"
+    }
+  },
+  "schema": {
+    "title": "Übersichtsschaltplan",
+    "subtitle": "Automatisch aus der Verteilerbeschreibung erzeugt: von der Einspeisung bis zu jedem Stromkreis.",
+    "grid": "Netz {v} V",
+    "hint": "Ein Gerät antippen, um seine Karte zu öffnen. Mit der Simulation lassen sich Geräte im Schaltplan „abschalten“."
+  },
+  "checks": {
+    "title": "Prüfungen",
+    "subtitle": "Automatische Prüfung des Verteilers gegen die grundlegenden Installationsregeln.",
+    "level": {
+      "error": "Fehler",
+      "warn": "Warnungen",
+      "info": "Hinweise"
+    },
+    "totalLoad": "Geschätzte Last der Wohnung",
+    "totalHint": "Mit Gleichzeitigkeit. Gesamtleistung aller Geräte: {nameplate} kW.",
+    "issues": "Befunde",
+    "showInfo": "Hinweise anzeigen",
+    "allGood": "Keine Befunde.",
+    "circuits": "Last je Stromkreis",
+    "rulesTitle": "Was wie geprüft wird",
+    "disclaimer": "Diese Prüfungen sind vereinfacht und ersetzen weder eine Planung noch eine Prüfung durch einen Elektriker. Kupfer, Unterputzverlegung, Spannung aus den Einstellungen.",
+    "code": {
+      "cycle": {
+        "title": "Schleife in der Einspeisekette",
+        "hint": "{device} speist sich über andere Geräte selbst. Das Feld „Gespeist von“ prüfen."
+      },
+      "cable-overload": {
+        "title": "Automat zu groß für die Leitung",
+        "hint": "{rating} A an {section} mm²: Die Leitung überhitzt, bevor der Automat auslöst. Grenze für diesen Querschnitt: {max} A."
+      },
+      "cable-marginal": {
+        "title": "Automat an der Grenze der Leitung",
+        "hint": "{rating} A an {section} mm² ist nur bei günstigen Verlegebedingungen zulässig. Empfohlen: {max} A."
+      },
+      "cable-unknown": {
+        "title": "Querschnitt nicht angegeben",
+        "hint": "Ohne Querschnitt lässt sich der Nennstrom des Automaten nicht prüfen."
+      },
+      "load-over": {
+        "title": "Stromkreis überlastet",
+        "hint": "Geschätzter Strom {current} A übersteigt den Nennstrom {rating} A. Der Automat wird auslösen."
+      },
+      "load-high": {
+        "title": "Stromkreis über 80 % belastet",
+        "hint": "Geschätzter Strom {current} A an einem {rating}-A-Automaten. Kaum Reserve."
+      },
+      "selectivity-over": {
+        "title": "Selektivität verletzt",
+        "hint": "{rating} A sitzt hinter {upstream} mit {upRating} A. Bei Überlast löst der falsche Schutz aus."
+      },
+      "selectivity-equal": {
+        "title": "Gleicher Nennstrom wie vorgeschaltet",
+        "hint": "Bei Überlast kann {upstream} statt dieses Stromkreises auslösen und mehr abschalten als nötig."
+      },
+      "rcd-underrated": {
+        "title": "FI eventuell ohne Überlastschutz",
+        "hint": "Ein {rating}-A-FI sitzt hinter {upstream} mit {upRating} A, und die Automaten darunter ergeben zusammen mehr als seinen Nennstrom."
+      },
+      "rcd-cascade": {
+        "title": "FI hinter FI ohne Selektivität",
+        "hint": "{leakage} mA sitzt hinter {upstream} mit {upLeakage} mA. Ein Fehlerstrom kann beide auslösen. Vorgeschaltet einen selektiven (S) FI ab 100 mA verwenden."
+      },
+      "rating-missing": {
+        "title": "Nennstrom nicht angegeben",
+        "hint": "Nennstrom angeben, damit die Prüfungen greifen."
+      },
+      "empty-circuit": {
+        "title": "Keine Punkte mit diesem Stromkreis verknüpft",
+        "hint": "Im Plan markieren, was dieser Automat versorgt, damit klar ist, was er abschaltet."
+      },
+      "unplaced": {
+        "title": "Gerät nicht im Verteiler platziert",
+        "hint": "Im Editor einer Reihe hinzufügen."
+      },
+      "point-unassigned": {
+        "title": "Punkt ohne Automat",
+        "hint": "„{point}“ ist keinem Automaten zugeordnet."
+      },
+      "wet-no-rcd": {
+        "title": "Nassbereich ohne FI",
+        "hint": "„{point}“ liegt in einem Nassraum, hat aber keinen FI oder FI/LS mit höchstens 30 mA davor. Das ist Pflicht."
+      },
+      "socket-no-rcd": {
+        "title": "Steckdose ohne FI",
+        "hint": "„{point}“ ist nicht durch einen 30-mA-FI geschützt. Steckdosenstromkreise brauchen einen."
+      },
+      "rcd-class": {
+        "title": "FI Typ AC vor Inverter-Geräten",
+        "hint": "Ein Gerät vom Typ {profile} kann pulsierende Fehlerströme erzeugen, die ein FI Typ AC nicht erkennt. Typ A ist nötig."
+      },
+      "input-power": {
+        "title": "Geschätzte Leistung über dem Zulässigen",
+        "hint": "{kw} kW bei {max} kW zulässig."
+      },
+      "phase-imbalance": {
+        "title": "Schieflast",
+        "hint": "L1 {L1} W · L2 {L2} W · L3 {L3} W. Last umverteilen."
+      },
+      "bus-no-psu": {
+        "title": "Keine KNX-Spannungsversorgung",
+        "hint": "Busgeräte funktionieren ohne Linienspannungsversorgung nicht."
+      },
+      "bus-dup-address": {
+        "title": "Doppelte physikalische Adresse",
+        "hint": "Adresse {address} ist bereits von {other} belegt. Die Geräte kommen sich in die Quere."
+      },
+      "channel-unlinked": {
+        "title": "Kanal {channel} steuert nichts",
+        "hint": "Punkte im Plan mit dem Kanal verknüpfen oder ihn als Reserve kennzeichnen."
+      },
+      "channel-mismatch": {
+        "title": "Kanal steuert einen Punkt auf einem anderen Stromkreis",
+        "hint": "Kanal {channel} ist mit „{point}“ verknüpft, dieser Punkt wird aber nicht von diesem Aktor versorgt."
+      },
+      "ga-unknown": {
+        "title": "Gruppenadresse führt ins Leere",
+        "hint": "„{point}“ sendet an {group}, aber kein Aktorkanal hört darauf."
+      },
+      "route-diagonal": {
+        "title": "Leitungsweg verläuft schräg",
+        "hint": "Leitungsweg {route} hat einen schrägen Abschnitt. Leitungen werden parallel zu den Wänden verlegt, damit der Plan genau zeigt, wo sie liegen. Den Abschnitt waagerecht und senkrecht neu zeichnen."
+      },
+      "route-off-wall": {
+        "title": "Wandleitung quert den Raum",
+        "hint": "Leitungsweg {route} soll in der Wand verlaufen, liegt aber teilweise mehr als 30 cm von jeder Wand entfernt. An den Wänden entlang führen oder auf Boden bzw. Decke umstellen."
+      },
+      "route-drop-midair": {
+        "title": "Abstieg zum Punkt liegt nicht in einer Wand",
+        "hint": "Leitungsweg {route} steigt oder fällt zu „{point}“, der mehr als 30 cm von einer Wand entfernt ist. Senkrechte Abschnitte verlaufen nur in Wänden: den Punkt an eine Wand verschieben oder die Leitung anders führen."
+      }
+    },
+    "rules": {
+      "cable": {
+        "title": "Querschnitt und Nennstrom",
+        "body": "Ein Automat schützt die Leitung, nicht das Gerät. Kupfer in der Wand: 1,5 mm² bis 10 A, 2,5 mm² bis 16 A, 4 mm² bis 25 A, 6 mm² bis 32 A. Ein größerer Automat lässt die Leitung überhitzen."
+      },
+      "load": {
+        "title": "Last je Stromkreis",
+        "body": "Der Strom wird aus der Geräteleistung mit Bedarfsfaktoren berechnet: Steckdosen 0,3, Licht 1, Geräte 0,7 bis 1. Für den ganzen Verteiler kommt ein Gleichzeitigkeitsfaktor nach Anzahl der Stromkreise hinzu."
+      },
+      "selectivity": {
+        "title": "Selektivität",
+        "body": "Ein nachgeschalteter Automat muss einen kleineren Nennstrom haben als der vorgeschaltete, damit ein Fehler nur einen Stromkreis abschaltet und nicht die ganze Wohnung."
+      },
+      "rcd": {
+        "title": "FI und Kaskaden",
+        "body": "Ein 30-mA-FI schützt Personen. Zwei FI in Reihe ohne Selektivität lösen gemeinsam aus, der vorgeschaltete sollte daher selektiv (S) sein, mit 100 oder 300 mA."
+      },
+      "wet": {
+        "title": "Nassbereiche",
+        "body": "Alles in Bad und WC muss hinter einem FI oder FI/LS mit 10 oder 30 mA liegen."
+      },
+      "class": {
+        "title": "FI-Typ",
+        "body": "Waschmaschinen, Geschirrspüler, Induktionskochfelder und Inverter-Klimaanlagen erzeugen pulsierende Fehlerströme. Sie brauchen Typ A; Typ AC erkennt sie nicht."
+      },
+      "input": {
+        "title": "Anschlussleistung",
+        "body": "Der geschätzte Bedarf wird mit der vertraglich zugesicherten Leistung verglichen, die sich in den allgemeinen Einstellungen des Editors festlegen lässt."
+      },
+      "routes": {
+        "title": "Wie Leitungswege verlaufen",
+        "body": "Unterputzleitungen verlaufen nur waagerecht und senkrecht, parallel zu den Wänden. Eine Wandleitung bleibt in der Wand. Vom Boden oder von der Decke führt die Leitung an einer Wand hinunter zur Steckdose oder zum Schalter, nie frei durch den Raum."
+      }
+    }
+  },
+  "smart": {
+    "title": "Smart Home",
+    "subtitle": "Busgeräte (KNX und andere), ihre Adressen und was was steuert.",
+    "empty": "Dieser Verteiler hat keine Busgeräte. Bei KNX, DALI oder Modbus im Editor Aktoren, eine Bus-Spannungsversorgung und Bedienpanels hinzufügen.",
+    "openDemo": "KNX-Demo ansehen",
+    "safety": "Ein Aktorkanal ist ein softwaregesteuertes Relais. Ein per Panel ausgeschaltetes Licht steht weiter unter Spannung. Vor Arbeiten an Leitungen den Automaten ausschalten.",
+    "topology": "Geräte am Bus",
+    "address": "Adresse",
+    "device": "Gerät",
+    "channels": "Kanäle",
+    "channel": "Kanal",
+    "groups": "Gruppenadressen",
+    "group": "Adresse",
+    "output": "Schaltet",
+    "controlledFrom": "Gesteuert von",
+    "noOutput": "kein Aktor",
+    "panels": "Panels & Sensoren",
+    "panelControls": "Steuert",
+    "system": {
+      "knx": "KNX",
+      "dali": "DALI",
+      "modbus": "Modbus",
+      "zigbee": "Zigbee",
+      "other": "Anderer Bus",
+      "zwave": "Z-Wave",
+      "matter": "Matter / Thread",
+      "wirenboard": "Wiren Board"
+    },
+    "fn": {
+      "switch": "Ein/Aus",
+      "dimmer": "Dimmer",
+      "blind": "Jalousie",
+      "heating": "Heizung",
+      "hvac": "Klima",
+      "input": "Eingang",
+      "other": "Sonstiges"
+    }
+  },
+  "maintenance": {
+    "title": "Wartung",
+    "subtitle": "Was wie oft zu prüfen ist, damit der Schutz im Ernstfall funktioniert.",
+    "every": "Alle {n} Tage",
+    "last": "zuletzt am {date}",
+    "state": {
+      "overdue": "{n} Tage überfällig",
+      "never": "noch nie erledigt",
+      "soon": "bald: {date}",
+      "ok": "bis {date}"
+    },
+    "markDone": "Als erledigt markieren",
+    "markHint": "Das legt einen Eintrag im Protokoll an.",
+    "date": "Datum",
+    "note": "Kommentar",
+    "saved": "Im Protokoll eingetragen",
+    "journal": "Protokoll",
+    "empty": "Noch keine Einträge.",
+    "viewerHint": "Erledigte Aufgaben trägt der Eigentümer in der App ein; sie erscheinen hier nach der nächsten Veröffentlichung."
+  },
+  "photos": {
+    "title": "Fotos & Dokumente",
+    "subtitle": "Wände vor dem Verputzen, damit klar ist, wo die Leitungen liegen, dazu Prüfprotokolle, Schaltpläne und Anleitungen.",
+    "untitled": "Ohne Titel",
+    "empty": "Noch keine Fotos. Im Editor hinzufügen.",
+    "documents": "Dokumente",
+    "noDocs": "Noch keine Dokumente."
+  },
+  "docKind": {
+    "act": "Prüfprotokoll",
+    "scheme": "Schaltplan",
+    "passport": "Anleitung",
+    "warranty": "Garantie",
+    "invoice": "Beleg",
+    "other": "Dokument"
+  },
+  "labels": {
+    "title": "Beschriftung & QR",
+    "subtitle": "Ein QR-Aufkleber für die Tür und maßstabsgetreue Beschriftungen für die Automaten.",
+    "strips": "Reihenbeschriftung",
+    "perDevice": "QR für jedes Gerät",
+    "height": "Streifenhöhe",
+    "print": "Drucken",
+    "printHint": "Mit 100 % Skalierung drucken, ohne „An Seite anpassen“. Jede Zelle ist 17,5 mm je TE breit.",
+    "scan": "Handykamera hierauf richten: sehen, welcher Automat was abschaltet und was zu tun ist, wenn etwas auslöst.",
+    "emergencyLine": "Ausgelöst? Scannen",
+    "row": "Reihe {n}"
+  },
+  "qr": {
+    "description": "Mit der Handykamera scannen.",
+    "withPassword": "Passwort einbetten",
+    "withPasswordHint": "Wer den Code scannt, öffnet die Daten ohne Passworteingabe. Es steht hinter dem #, gelangt also nie zum Server.",
+    "noPublicUrl": "Die Seitenadresse fehlt. Im Editor eintragen (Allgemein → Seitenadresse), sonst öffnet sich der QR-Code nicht auf dem Handy.",
+    "copy": "Kopieren",
+    "copied": "Link kopiert",
+    "copyFailed": "Kopieren fehlgeschlagen. Link von Hand markieren."
+  },
+  "pwa": {
+    "offline": "Offline",
+    "ready": "Offline bereit",
+    "readyHint": "Die Seite ist auf diesem Gerät gespeichert und öffnet auch ohne Internet oder Strom.",
+    "update": "Aktualisieren"
+  },
+  "settings": {
+    "language": "Sprache",
+    "themeTitle": "Darstellung",
+    "theme": {
+      "auto": "System",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "lock": "Sperren",
+    "lockHint": "Passwort auf diesem Gerät vergessen",
+    "lockAction": "Vergessen",
+    "draft": "Entwurf",
+    "draftHint": "Unveröffentlichte Änderungen auf diesem Gerät",
+    "discard": "Änderungen verwerfen",
+    "draftDiscarded": "Entwurf verworfen",
+    "offline": "Offline-Modus",
+    "offlineNotYet": "Wird noch gespeichert …",
+    "clearCache": "Cache leeren",
+    "cacheCleared": "Cache geleert, lädt neu",
+    "version": "Version",
+    "dataSource": "Daten",
+    "updated": "Aktualisiert",
+    "encryption": "Verschlüsselung",
+    "source": {
+      "published": "von der Seite",
+      "demo": "Demo",
+      "file": "aus Datei",
+      "new": "neues Projekt",
+      "preview": "Vorschau aus dem Editor"
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "subtitle": "Änderungen werden als Entwurf auf diesem Gerät gespeichert. Danach eine Datei speichern oder veröffentlichen.",
+    "draftBadge": "Entwurf",
+    "translations": "Übersetzungen",
+    "auto": "auto",
+    "refIssues": "defekte Verweise",
+    "tab": {
+      "general": "Allgemein",
+      "panel": "Verteiler",
+      "plan": "Plan",
+      "media": "Fotos & Dokumente",
+      "maintenance": "Wartung",
+      "publish": "Speichern & veröffentlichen"
+    },
+    "general": {
+      "title": "Name",
+      "location": "Wo der Verteiler ist",
+      "locationHint": "Damit er auch im Dunkeln zu finden ist: „Flur, hinter dem Spiegel“",
+      "enclosure": "Gehäuse",
+      "address": "Adresse",
+      "addressHint": "Optional. Wird nur verschlüsselt gespeichert.",
+      "publicUrl": "Seitenadresse",
+      "publicUrlHint": "Wo die App veröffentlicht ist. Nötig für QR-Codes.",
+      "supply": "Einspeisung",
+      "phases": "Phasen",
+      "voltage": "Spannung",
+      "maxPower": "Zulässige Leistung",
+      "input": "Hauptgerät",
+      "role": "Wer",
+      "name": "Name",
+      "phone": "Telefon",
+      "contactNote": "Kommentar",
+      "account": "Kundennummer",
+      "accountHint": "Wird beim Anruf beim Netzbetreiber oder der Hausverwaltung abgefragt"
+    },
+    "panel": {
+      "used": "{used} von {total} TE",
+      "mod": "TE",
+      "blank": "Blende",
+      "device": "Gerät",
+      "narrower": "Schmaler",
+      "wider": "Breiter",
+      "addRow": "Reihe hinzufügen",
+      "unplaced": "Nicht im Verteiler platziert",
+      "pick": "Aus der Liste wählen, was dorthin kommt. Um ein bereits platziertes Gerät zu ändern, es antippen.",
+      "left": "Nach links",
+      "right": "Nach rechts",
+      "rowUp": "Reihe hoch",
+      "rowDown": "Reihe runter",
+      "place": "Platzieren",
+      "id": "Kennzeichnung",
+      "idTaken": "Diese Kennzeichnung gibt es schon",
+      "type": "Typ",
+      "label": "Beschriftung",
+      "curve": "Charakteristik",
+      "width": "Breite, TE",
+      "selective": "Selektiv (S)",
+      "upstream": "Gespeist von",
+      "noUpstream": "Einspeisung (nichts vorgeschaltet)",
+      "circuit": "Stromkreis",
+      "brand": "Hersteller",
+      "model": "Modell",
+      "tags": "Tags",
+      "addHere": "Hier ein Gerät hinzufügen",
+      "slotTitle": "Was kommt hierher?",
+      "slotWhere": "Reihe {row}, freie TE: {free}",
+      "insertRight": "Rechts hinzufügen",
+      "howAdd": "„+“ an einem freien Platz im Verteiler antippen",
+      "section": {
+        "specs": "Technische Daten",
+        "wiring": "Einspeisung und Stromkreis",
+        "passport": "Produkt",
+        "maintenance": "Wartung"
+      },
+      "labelPlaceholder": "Küche, Steckdosen Arbeitsplatte",
+      "tagsPlaceholder": "Küche, Steckdosen",
+      "position": "Position im Verteiler",
+      "blankShort": "Blende",
+      "unplacedOne": "Nicht im Verteiler platziert",
+      "rcdClass": "FI-Typ",
+      "location": "Wo es sitzt",
+      "locationPlaceholder": "Falls nicht in diesem Verteiler: Zählerschrank im Treppenhaus, links vom Aufzug. Den Schlüssel hat der Hausmeister.",
+      "group": {
+        "protection": "Schutz",
+        "control": "Messung und Steuerung",
+        "wiring": "Schienen und Klemmen",
+        "smart": "Smart Home",
+        "other": "Sonstiges",
+        "power": "Stromversorgung"
+      },
+      "suggestTask": "empfohlen",
+      "createTask": "Aufgabe anlegen",
+      "joinTask": "Zur Aufgabe hinzufügen",
+      "leaveTask": "Aus Aufgabe entfernen"
+    },
+    "smart": {
+      "title": "Smart-Home-Bus",
+      "system": "System",
+      "address": "Physikalische Adresse",
+      "addressHint": "Bei KNX: Bereich.Linie.Teilnehmer",
+      "addChannel": "Kanal hinzufügen",
+      "channelsHint": "Kanal, Funktion, Gruppenadresse und die gesteuerten Punkte im Plan.",
+      "noPoints": "Keine passenden Punkte. Zuerst im Plan anlegen."
+    },
+    "plan": {
+      "mode": {
+        "select": "Auswählen",
+        "rect": "Raum",
+        "room": "Umriss",
+        "point": "Punkt",
+        "route": "Leitung",
+        "photo": "Foto",
+        "opening": "Öffnung"
+      },
+      "hint": {
+        "select": "Punkt, Raum oder Foto antippen zum Bearbeiten. Griffe ziehen zum Verschieben. Mausrad oder zwei Finger zum Zoomen.",
+        "room": "Für einen unregelmäßigen Raum: Ecken nacheinander setzen; Wände rasten im rechten Winkel ein (Alt halten für beliebige Winkel). Wandlänge eingeben und Enter drücken, um sie exakt zu zeichnen. Zum Schließen die erste Ecke antippen oder „Fertig“.",
+        "point": "Typ und Automat wählen, dann in den Plan tippen. Nahe einer Wand landet der Punkt auf der Wand.",
+        "route": "Den Leitungsweg Punkt für Punkt zeichnen. Abschließen durch erneutes Klicken auf den letzten Punkt, mit Enter oder über die Leiste unten am Plan. Um den Weg entsteht eine Bohrverbotszone. Abschnitte verlaufen rechtwinklig, so wie Leitungen tatsächlich verlegt werden; Alt halten für eine Diagonale. Länge eingeben und Enter drücken, um einen Abschnitt exakt festzulegen.",
+        "photo": "Dorthin tippen, wo das Foto aufgenommen wurde, und das Bild wählen.",
+        "rect": "Eine Ecke des Raums antippen, dann die gegenüberliegende. Oder die erste Ecke antippen und die Größe eingeben, z. B. „3.5x4“, dann Enter.",
+        "view3d": "3D-Ansicht zum Prüfen von Höhen und Leitungswegen. Punkt oder Weg anklicken, um ihn rechts zu bearbeiten. Gezeichnet wird in 2D.",
+        "opening": "Tür oder Fenster wählen und auf eine Wand klicken. Die Öffnung richtet sich daran aus; Breite und Anschlag rechts anpassen."
+      },
+      "noDevice": "Kein Automat",
+      "finish": "Fertig",
+      "background": "Vorlage",
+      "bgLoaded": "Vorlage geladen",
+      "bgFailed": "Vorlage konnte nicht geladen werden",
+      "width": "Planbreite",
+      "height": "Planhöhe",
+      "grid": "Rasterweite",
+      "opacity": "Deckkraft der Vorlage",
+      "kind": "Typ",
+      "label": "Beschriftung",
+      "device": "Automat",
+      "room": "Raum",
+      "power": "Leistung",
+      "count": "Anzahl",
+      "heightMm": "Höhe",
+      "profile": "Geräteprofil",
+      "profileHint": "Für Lastschätzung und Prüfung des FI-Typs",
+      "controls": "Gruppenadressen",
+      "controlsHint": "Kommagetrennt: 1/1/1, 3/1/1",
+      "roomN": "Raum {n}",
+      "roomName": "Raumname",
+      "wet": "Nassbereich (Bad, WC)",
+      "roomHint": "Eckgriffe ziehen, um die Form anzupassen.",
+      "routeKind": "Leitungsart",
+      "routeKinds": {
+        "power": "Starkstrom",
+        "bus": "Smart-Home-Bus",
+        "low": "Schwachstrom",
+        "conduit": "Leerrohr"
+      },
+      "routeNote": "Verlauf",
+      "safeWidth": "Bohrverbotszone",
+      "caption": "Bildunterschrift",
+      "replace": "Ersetzen",
+      "summary": "Im Plan",
+      "rooms": "Räume",
+      "routes": "Leitungswege",
+      "addCable": "Kabel hinzufügen",
+      "cableLabel": "Bezeichnung, z. B. „Port 3“",
+      "cables": "Kabel im Rohr",
+      "ceiling": "Raumhöhe",
+      "ceilingHint": "Leer: wie für die ganze Wohnung ({cm} cm)",
+      "diameter": "Rohrdurchmesser",
+      "elevation": "Höhe über dem Boden",
+      "elevationHint": "Z. B. 30 cm auf Steckdosenhöhe oder 90 cm auf Schalterhöhe",
+      "from": "Von",
+      "to": "Nach",
+      "mount": "Verlauf",
+      "pullString": "Mit Zugdraht",
+      "wallHeight": "Raumhöhe",
+      "roomWidth": "Breite",
+      "roomDepth": "Tiefe",
+      "concealed": "Verdeckt hinter der Oberfläche (Putz, Fliesen, Spanndecke)",
+      "undoPoint": "Punkt entfernen",
+      "backToPlan": "Zurück zum Plan",
+      "openingKind": {
+        "door": "Tür",
+        "window": "Fenster"
+      },
+      "openingWidth": "Breite",
+      "openingFlip": "Andersherum öffnend",
+      "openingOnWall": "Auf eine Wand klicken: Türen und Fenster sitzen in Wänden."
+    },
+    "media": {
+      "photosHint": "Die Wände vor dem Verputzen fotografieren: Noch Jahre später zeigen diese Fotos am einfachsten, wo die Leitungen liegen.",
+      "addPhotos": "Fotos hinzufügen",
+      "added": "Fotos hinzugefügt: {n}",
+      "notOnPlan": "Nicht im Plan markiert (Reiter Plan → Foto)",
+      "addDoc": "Dokument hochladen",
+      "addLink": "Link",
+      "tooBig": "Datei ist größer als {mb} MB",
+      "unreadable": "„{name}“ konnte nicht gelesen werden",
+      "docTitle": "Titel",
+      "docKind": "Typ",
+      "link": "Link"
+    },
+    "maintenance": {
+      "tasks": "Plan",
+      "title": "Aufgabe",
+      "interval": "Intervall",
+      "howTo": "Anleitung",
+      "devices": "Geräte",
+      "logDone": "Als erledigt eintragen",
+      "orphans": "Einträge ohne Aufgabe"
+    },
+    "publish": {
+      "status": "Status",
+      "draftLocal": "Entwurf auf diesem Gerät gespeichert",
+      "noChanges": "Keine Änderungen",
+      "savedAt": "automatisch gespeichert um {time}",
+      "refIssues": "Es gibt defekte Verweise; vor dem Veröffentlichen beheben",
+      "checkErrors": "Die Prüfungen haben Fehler gefunden: {n}. Veröffentlichen geht, aber vorher ansehen.",
+      "fileTitle": "Datei",
+      "fileHint": "Eine verschlüsselte .panel-Datei. An den Eigentümer oder den Elektriker schicken; sie öffnet sich in der Web-App und in der Desktop-App.",
+      "save": "Speichern",
+      "saveAs": "Speichern unter …",
+      "saved": "Datei gespeichert",
+      "downloadPanel": ".panel herunterladen",
+      "import": "Datei importieren",
+      "importPassword": "Passwort der Datei",
+      "imported": "Datei in den Entwurf geladen",
+      "plain": "Unverschlüsselt exportieren",
+      "plainWarn": "Eine unverschlüsselte Datei enthält Grundriss und Leitungswege. Nicht veröffentlichen.",
+      "siteTitle": "Auf der Seite veröffentlichen",
+      "siteHint": "Sendet die verschlüsselte Datei ins GitHub-Repository; die Seite aktualisiert sich nach ein paar Minuten.",
+      "owner": "Eigentümer",
+      "repo": "Repository",
+      "branch": "Branch",
+      "path": "Dateipfad",
+      "token": "GitHub-Token",
+      "tokenHint": "Ein Fine-grained-Token mit Contents: Read and write nur für dieses Repository.",
+      "rememberToken": "Token auf diesem Gerät merken",
+      "publish": "Veröffentlichen",
+      "published": "Veröffentlicht",
+      "publishedHint": "Die Seite aktualisiert sich, sobald GitHub Actions fertig ist.",
+      "commit": "Commit",
+      "failed": "Veröffentlichen fehlgeschlagen",
+      "badToken": "Das Token ist ungültig oder hat keine Schreibrechte",
+      "notFound": "Repository oder Branch nicht gefunden",
+      "manual": "Es geht auch von Hand: panel.enc.json herunterladen und {path} im Repository ersetzen.",
+      "passwordTitle": "Passwort",
+      "changePassword": "Passwort ändern",
+      "passwordChanged": "Passwort geändert",
+      "passwordChangedHint": "Die Daten speichern oder veröffentlichen, dann den QR-Code neu drucken.",
+      "passwordHint": "Das neue Passwort gilt ab dem nächsten Speichern oder Veröffentlichen. Alte QR-Codes funktionieren dann nicht mehr.",
+      "setPassword": "Passwort festlegen",
+      "passwordSet": "Ein Passwort ist gesetzt. QR-Codes und Datei öffnen sich damit.",
+      "passwordLater": "Noch kein Passwort. Es wird beim ersten verschlüsselten Speichern oder Veröffentlichen abgefragt."
+    },
+    "undo": "Rückgängig (⌘Z)",
+    "redo": "Wiederholen (⇧⌘Z)",
+    "translationsHint": "Eine leere Sprache zeigt den englischen Text, oder den russischen, wenn es keinen englischen gibt.",
+    "md": {
+      "bold": "Fett",
+      "italic": "Kursiv",
+      "list": "Liste",
+      "numbered": "Nummerierte Liste",
+      "link": "Link",
+      "preview": "Vorschau",
+      "edit": "Bearbeiten",
+      "boldText": "fetter Text",
+      "italicText": "kursiv",
+      "linkText": "Linktext"
+    },
+    "github": {
+      "intro": "Mit GitHub anmelden: Die App listet deine Repositories auf oder legt eine neue Seite an. Kein Token von Hand nötig.",
+      "signIn": "Mit GitHub anmelden",
+      "signedInAs": "Angemeldet als",
+      "signOut": "Abmelden",
+      "site": "Seite",
+      "pickRepo": "Repository wählen",
+      "newSite": "Neue Seite anlegen",
+      "newName": "Name",
+      "create": "Anlegen",
+      "created": "Seite angelegt",
+      "createdHint": "GitHub baut sie innerhalb weniger Minuten nach der ersten Veröffentlichung. Die Seitenadresse wird unter Allgemein eingetragen.",
+      "createFailed": "Seite konnte nicht angelegt werden",
+      "nameTaken": "Ein Repository mit diesem Namen gibt es schon. Bitte einen anderen wählen.",
+      "noTemplate": "Die Vorlage {repo} ist nicht verfügbar. Ihr Eigentümer muss sie in den Einstellungen als Template repository markieren.",
+      "codeTitle": "Anmeldung auf GitHub bestätigen",
+      "codeHint": "GitHub öffnen und diesen Code eingeben. Das Fenster schließt sich nach der Bestätigung von selbst.",
+      "copyOpen": "Code kopieren und GitHub öffnen",
+      "waiting": "Warte auf Bestätigung …",
+      "failed": "GitHub hat nicht geantwortet",
+      "error": {
+        "denied": "Die Anmeldung wurde auf GitHub abgelehnt",
+        "expired": "Der Code ist abgelaufen. Bitte erneut versuchen.",
+        "failed": "Anmeldung mit GitHub fehlgeschlagen"
+      },
+      "advanced": "Erweitert: Branch und Dateipfad",
+      "remember": "Auf diesem Gerät angemeldet bleiben",
+      "sessionExpired": "Die GitHub-Anmeldung ist abgelaufen. Bitte erneut anmelden."
+    }
+  },
+  "landing": {
+    "nav": {
+      "features": "Funktionen",
+      "how": "So funktioniert’s",
+      "privacy": "Datenschutz",
+      "diy": "Selbst machen"
+    },
+    "cta": {
+      "demo": "Demo öffnen",
+      "smart": "KNX-Demo",
+      "download": "Editor herunterladen",
+      "open": "App öffnen",
+      "source": "Quellcode",
+      "downloadFor": "Für {os} herunterladen",
+      "otherSystems": "Andere Systeme"
+    },
+    "hero": {
+      "badge": "Ein QR-Code an der Verteilertür",
+      "title": "Verteilertür scannen und sehen, was jeder Automat schaltet",
+      "subtitle": "Ein Aufkleber an der Tür des Verteilers öffnet eine Seite mit dem Verteileraufbau und dem Grundriss der Wohnung. Sie zeigt, welcher Automat vor dem Tausch einer Steckdose abgeschaltet werden muss und wo die Leitungen unter dem Putz liegen. Löst etwas aus, ist eine Schritt-für-Schritt-Anleitung direkt zur Hand. Die Daten sind verschlüsselt, und nach dem ersten Aufruf funktioniert die Seite offline.",
+      "tap": "Ein paar Automaten umlegen",
+      "live": "Stromlose Punkte im Plan: {n}"
+    },
+    "how": {
+      "title": "So funktioniert’s",
+      "describe": {
+        "title": "Der Elektriker erfasst den Verteiler",
+        "body": "Reihen mit Automaten und FI, der Grundriss mit Steckdosen, Leitungswegen und Fotos der Wände vor dem Verputzen. Der Editor läuft im Browser, eine Desktop-App gibt es auch."
+      },
+      "encrypt": {
+        "title": "Alles landet in einer Datei",
+        "body": "Die .panel-Datei ist mit einem Passwort verschlüsselt. An den Eigentümer schicken oder direkt aus dem Editor auf GitHub Pages veröffentlichen."
+      },
+      "stick": {
+        "title": "Der QR-Code kommt an die Tür",
+        "body": "Das Passwort steckt schon im Code, niemand muss es eintippen. Beim ersten Aufruf behält das Handy eine Kopie, danach öffnet sich die Seite auch ohne Internet."
+      }
+    },
+    "features": {
+      "title": "Was die Seite zeigt",
+      "subtitle": "Antworten auf Alltagsfragen wie „was schalte ich ab, um diese Steckdose zu tauschen“, dazu die Prüfungen, die sonst ein Elektriker macht.",
+      "panel": {
+        "title": "Ein Verteiler wie in echt",
+        "body": "Automaten werden maßstabsgetreu mit Nennstrom und Charakteristik gezeichnet, FI mit ihrem Fehlerstrom. Antippen zeigt, was sie versorgen und wie stark sie belastet sind."
+      },
+      "find": {
+        "title": "Was abschalten?",
+        "body": "Steckdose oder Boiler wählen. Die Antwort lautet etwa „Reihe 2, Fünfter von links“, und der Automat leuchtet im Verteiler auf."
+      },
+      "emergency": {
+        "title": "Wenn etwas auslöst",
+        "body": "Eine Schritt-für-Schritt-Anleitung, der jeder im Haushalt folgen kann. Sie hilft herauszufinden, was passiert ist und wann ein Elektriker nötig ist."
+      },
+      "plan": {
+        "title": "Wo nicht bohren",
+        "body": "Der Grundriss zeigt Steckdosen, Leuchten und Leitungswege mit einem Streifen, in dem Bohren tabu ist. Fotos der Wände von vor der Renovierung lassen sich anhängen."
+      },
+      "checks": {
+        "title": "Installationsprüfungen",
+        "body": "Die App vergleicht Querschnitte mit Nennströmen, summiert die Last je Stromkreis und prüft die Selektivität. Außerdem stellt sie sicher, dass Nassräume hinter einem FI liegen und Inverter-Geräte den richtigen FI-Typ haben."
+      },
+      "schema": {
+        "title": "Übersichtsschaltplan",
+        "body": "Automatisch aus den Verteilerdaten gezeichnet. Der Stromfluss ist animiert, und Automaten lassen sich abschalten, um zu sehen, was dunkel wird."
+      },
+      "smart": {
+        "title": "Smart Home und KNX",
+        "body": "Aktoren, Gruppenadressen und Wandpanels je Raum, damit klar ist, welcher Kanal was schaltet. Die App wertet ein Smart-Relais nie als Freischaltung und verweist auf den vorgeschalteten Automaten."
+      },
+      "labels": {
+        "title": "Beschriftungen und QR-Codes",
+        "body": "Automatenbeschriftungen werden maßstabsgetreu gedruckt. Jedes Gerät bekommt einen eigenen QR-Code."
+      },
+      "offline": {
+        "title": "Funktioniert bei Stromausfall",
+        "body": "Löst der Hauptschalter aus, fällt auch der Router aus. Eine einmal geöffnete Seite lädt trotzdem aus dem Speicher des Handys."
+      }
+    },
+    "privacy": {
+      "title": "Nur wer das Passwort hat, sieht den Grundriss",
+      "p1": "Der Browser verschlüsselt die Daten mit AES-256-GCM. Der Schlüssel wird per PBKDF2 aus dem Passwort abgeleitet.",
+      "p2": "Der Host speichert nur die verschlüsselte Datei. Die Seite hat keinen eigenen Server und keine Datenbank.",
+      "p3": "Das Passwort steht im Link hinter dem #-Zeichen. Browser senden diesen Teil der Adresse nie an den Server.",
+      "p4": "Fotos und Dokumente liegen in derselben verschlüsselten Datei.",
+      "scan": "Dieser QR-Code öffnet die Demo-Wohnung"
+    },
+    "diy": {
+      "title": "Selbst machen",
+      "subtitle": "Alles passiert in der Desktop-App. Nötig ist nur ein kostenloses GitHub-Konto: kein Fork, keine Tokens.",
+      "steps": [
+        "Desktop-App herunterladen und öffnen.",
+        "„Neuen Verteiler anlegen“ wählen. Hat der Elektriker eine .panel-Datei geschickt, stattdessen diese öffnen.",
+        "Verteiler und Plan ausfüllen. Beim ersten Speichern fragt die App nach einem Passwort.",
+        "Unter „Speichern & veröffentlichen“ auf „Mit GitHub anmelden“ drücken, dann „Neue Seite anlegen“ und „Veröffentlichen“.",
+        "Unter „Beschriftung & QR“ die Beschriftungen drucken und den QR-Code an die Verteilertür kleben.",
+        "Einmal im Monat die Prüftaste (T) der FI drücken. Wer es vergisst, wird von der App erinnert."
+      ],
+      "electrician": {
+        "title": "Für Elektriker",
+        "text": "Den Verteiler in der eigenen App erfassen und dem Kunden die .panel-Datei übergeben. Er öffnet sie in der App und veröffentlicht die Seite über sein eigenes GitHub-Konto. Deines wird nicht gebraucht."
+      },
+      "manual": {
+        "title": "Von Hand, für Entwickler",
+        "text": "Das Repository forken, GitHub Pages aktivieren und mit einem GitHub-Token veröffentlichen, oder einfach public/app/panel.enc.json ersetzen. Details im README."
+      }
+    },
+    "footer": "Die Seite ersetzt weder eine Elektroplanung noch eine Prüfung durch einen Elektriker.",
+    "meta": {
+      "title": "Verteilerplan hinter einem QR-Code",
+      "description": "Ein QR-Code an der Verteilertür öffnet den Automatenplan und den Grundriss mit Leitungswegen. Funktioniert offline, die Daten sind verschlüsselt."
+    }
+  },
+  "network": {
+    "title": "Netzwerk & Leerrohre",
+    "subtitle": "Ethernet, HDMI, Antenne und leere Rohre: wo jedes Kabel beginnt und endet.",
+    "empty": "Noch keine Schwachstromleitungen oder Leerrohre. Im Editor im Plan hinzufügen: Leitung → Schwachstrom oder Leerrohr.",
+    "all": "Alle",
+    "pull": "Zugdraht",
+    "conduitHint": "Leerrohre mit Zugdraht: {n} von {total}. Durch sie lässt sich ein weiteres Kabel ziehen, ohne die Wand aufzustemmen."
+  },
+  "route": {
+    "inside": "Darin: {n}",
+    "empty": "Leer",
+    "pullYes": "Mit Zugdraht: Ein weiteres Kabel kann eingezogen werden.",
+    "pullNo": "Ohne Zugdraht: Ein neues Kabel einzuziehen wird schwierig.",
+    "nodrill": "Nicht näher als {cm} cm am Leitungsweg bohren.",
+    "mount": {
+      "floor": "im Estrich",
+      "wall": "in der Wand",
+      "ceiling": "an der Decke",
+      "wallAt": "in der Wand, {cm} cm über dem Boden"
+    }
+  },
+  "cable": {
+    "ethernet": "Ethernet",
+    "hdmi": "HDMI",
+    "coax": "Antenne (Koax)",
+    "usb": "USB",
+    "speaker": "Lautsprecher",
+    "fiber": "Glasfaser",
+    "phone": "Telefon",
+    "alarm": "Alarmanlage",
+    "other": "Sonstiges Kabel"
+  },
+  "tour": {
+    "next": "Weiter",
+    "back": "Zurück",
+    "done": "Verstanden",
+    "skip": "Tipps schließen",
+    "replay": "Tipps zu diesem Bereich",
+    "resetTitle": "Tipps",
+    "resetHint": "Die Tipps in allen Bereichen wieder anzeigen.",
+    "reset": "Wieder anzeigen",
+    "resetDone": "Die Tipps erscheinen wieder in allen Bereichen",
+    "panel": {
+      "nav": {
+        "title": "Bereiche",
+        "text": "Hier liegen alle Bereiche: der Verteiler, der Grundriss, was abschalten, was tun, wenn etwas auslöst, und die Einrichtung."
+      },
+      "stats": {
+        "title": "Der Verteiler auf einen Blick",
+        "text": "Wie viele Stromkreise, FI und Punkte, wie viele TE belegt sind. Die orange Zahl sind offene Befunde; antippen für die Liste."
+      },
+      "board": {
+        "title": "Der Verteiler, wie er ist",
+        "text": "Einen Automaten antippen: was er versorgt, wo diese Steckdosen im Plan liegen, wie stark er belastet ist."
+      },
+      "view": {
+        "title": "Verteiler oder Liste",
+        "text": "Bei einem großen Verteiler zur Liste wechseln: dieselben Geräte als Zeilen mit ihren Nennströmen."
+      },
+      "simulate": {
+        "title": "Simulation",
+        "text": "Einschalten und Automaten antippen, um zu sehen, was stromlos wird, auch im Plan."
+      },
+      "filters": {
+        "title": "Filter",
+        "text": "Nur FI, nur die Küche oder nur Geräte mit Befunden anzeigen."
+      }
+    },
+    "plan": {
+      "canvas": {
+        "title": "Grundriss",
+        "text": "Steckdosen, Leuchten und Geräte. Einen Punkt antippen, um zu sehen, welcher Automat ihn abschaltet. Rote Schraffur heißt: hier nicht bohren."
+      },
+      "view": {
+        "title": "2D und 3D",
+        "text": "3D zeigt Steckdosenhöhen und wo Leitungen an Wänden und Decken verlaufen."
+      },
+      "simulate": {
+        "title": "Was dunkel wird",
+        "text": "Einen Automaten in der Simulation abschalten, dann werden die stromlosen Punkte im Plan abgedunkelt."
+      },
+      "layers": {
+        "title": "Ebenen",
+        "text": "Ausblenden, was nicht gebraucht wird: Schwachstrom, Maße, Wandfotos."
+      },
+      "aside": {
+        "title": "Details",
+        "text": "Der gewählte Punkt, Raum oder Leitungsweg erscheint hier."
+      }
+    },
+    "find": {
+      "search": {
+        "title": "Suchen",
+        "text": "Einfach lostippen: „Wasserkocher“, „Bad“, „QF5“. Die App zeigt, welcher Automat abzuschalten ist."
+      },
+      "rooms": {
+        "title": "Oder einen Raum wählen",
+        "text": "Einen Raum antippen, dann eine Steckdose oder Leuchte darin."
+      }
+    },
+    "schema": {
+      "tree": {
+        "title": "Übersichtsschaltplan",
+        "text": "Automatisch erzeugt: oben die Einspeisung, darunter FI und Stromkreise. Einen Block antippen, um das Gerät zu öffnen."
+      },
+      "simulate": {
+        "title": "Simulation",
+        "text": "Automaten im Schaltplan schalten: Zweige ohne Strom werden dunkel."
+      }
+    },
+    "checks": {
+      "counts": {
+        "title": "Befunde",
+        "text": "Fehler sollte man beheben, Warnungen prüfen, Hinweise sind optional."
+      },
+      "load": {
+        "title": "Last",
+        "text": "Wie viel die Wohnung gleichzeitig ziehen kann und ob die zulässige Leistung reicht."
+      },
+      "list": {
+        "title": "Was nicht stimmt",
+        "text": "Jeder Befund erklärt das Problem und verlinkt auf das Gerät."
+      }
+    },
+    "maintenance": {
+      "task": {
+        "title": "Plan",
+        "text": "Was am Verteiler wie oft zu tun ist: FI-Test, Klemmen nachziehen, Zählerstände."
+      },
+      "done": {
+        "title": "Als erledigt markieren",
+        "text": "Nach getaner Arbeit drücken; der nächste Termin wird automatisch berechnet."
+      },
+      "log": {
+        "title": "Protokoll",
+        "text": "Wer was wann gemacht hat."
+      }
+    },
+    "labels": {
+      "options": {
+        "title": "Was drucken",
+        "text": "Ein Türaufkleber, Streifen für die Automaten und ein QR-Code für jedes Gerät."
+      },
+      "sticker": {
+        "title": "QR für die Tür",
+        "text": "Dieser Code öffnet die Seite sofort, ohne Passworteingabe."
+      },
+      "print": {
+        "title": "Drucken",
+        "text": "Mit 100 % drucken, damit die Streifen zu den Automatenbreiten passen."
+      }
+    },
+    "emergency": {
+      "scenarios": {
+        "title": "Was ist passiert?",
+        "text": "Die Situation wählen, die App führt Schritt für Schritt durch."
+      },
+      "smell": {
+        "title": "Wenn es gefährlich ist",
+        "text": "Brandgeruch, Funken oder ein heißer Verteiler: zuerst diese Schaltfläche."
+      }
+    },
+    "edit-general": {
+      "tabs": {
+        "title": "Editor-Reiter",
+        "text": "Allgemein, Verteiler, Plan, Fotos, Wartung und Veröffentlichen."
+      },
+      "history": {
+        "title": "Rückgängig und Entwurf",
+        "text": "Jede Änderung landet in einem Entwurf auf diesem Gerät, und Fehler lassen sich rückgängig machen."
+      },
+      "meta": {
+        "title": "Name und Adresse",
+        "text": "Die Seitenadresse wird in den QR-Codes verwendet. Eine aus der App angelegte Seite trägt sie selbst ein."
+      },
+      "supply": {
+        "title": "Einspeisung",
+        "text": "Phasen, Spannung, zulässige Leistung und die Kundennummer."
+      },
+      "contacts": {
+        "title": "Kontakte",
+        "text": "Elektriker und Hausverwaltung. Ihre Nummern erscheinen unter „Etwas hat ausgelöst“."
+      },
+      "preview": {
+        "title": "Vorschau als Kunde",
+        "text": "Öffnet in einem eigenen Fenster, was der Eigentümer des Verteilers auf der Seite sieht. Aktualisiert sich beim Bearbeiten von selbst."
+      }
+    },
+    "edit-panel": {
+      "tabs": {
+        "title": "Editor-Reiter",
+        "text": "Allgemein, Verteiler, Plan, Fotos, Wartung und Veröffentlichen."
+      },
+      "board": {
+        "title": "Gerät hinzufügen",
+        "text": "„+“ an einem freien Platz der Hutschiene drücken und wählen, was dorthin kommt."
+      },
+      "view": {
+        "title": "Verteiler oder Liste",
+        "text": "Die Liste ist praktisch für Reihenbreiten und Blenden."
+      },
+      "addrow": {
+        "title": "Reihen",
+        "text": "Eine Reihe hinzufügen, wenn der Verteiler mehr Hutschienen hat."
+      },
+      "aside": {
+        "title": "Eigenschaften",
+        "text": "Hier wird das gewählte Gerät eingestellt: Nennstrom, Verdrahtung, Wartung."
+      }
+    },
+    "edit-plan": {
+      "modes": {
+        "title": "Werkzeuge",
+        "text": "Raum, Umriss, Öffnung, Punkt, Leitung und Foto. In den Plan klicken, um eines zu platzieren."
+      },
+      "canvas": {
+        "title": "Plan",
+        "text": "Ziehen zum Verschieben, scrollen zum Zoomen. Eine Zahl eingeben, um eine Wand- oder Leitungslänge festzulegen."
+      },
+      "view3d": {
+        "title": "In 3D prüfen",
+        "text": "Umschalten, um Höhen und Leitungswege räumlich zu sehen."
+      },
+      "aside": {
+        "title": "Eigenschaften",
+        "text": "Hier wird der gewählte Raum, Punkt oder Leitungsweg bearbeitet."
+      }
+    },
+    "edit-maintenance": {
+      "add": {
+        "title": "Neue Aufgabe",
+        "text": "Eine eigene Aufgabe hinzufügen. Standardaufgaben werden auf der Gerätekarte vorgeschlagen."
+      },
+      "task": {
+        "title": "Aufgabe und Protokoll",
+        "text": "Intervall, Anleitung, Geräte und der Nachweis, wann sie erledigt wurde."
+      }
+    },
+    "edit-publish": {
+      "file": {
+        "title": "Datei",
+        "text": "Eine verschlüsselte .panel speichern, um sie an Elektriker oder Eigentümer zu übergeben."
+      },
+      "site": {
+        "title": "Seite",
+        "text": "Den Verteiler auf einer eigenen Seite veröffentlichen: mit GitHub anmelden und mit ein paar Klicks eine anlegen."
+      },
+      "password": {
+        "title": "Passwort",
+        "text": "Es verschlüsselt die Daten und lässt sich nicht wiederherstellen. Gut aufschreiben."
+      }
+    }
+  },
+  "viewer": {
+    "emptyTitle": "Noch nichts veröffentlicht",
+    "emptyHint": "Der Eigentümer dieses Verteilers hat die Daten noch nicht auf diese Seite gestellt. Später noch einmal vorbeischauen.",
+    "failedTitle": "Verteiler konnte nicht geladen werden",
+    "failedHint": "Verbindung prüfen und erneut versuchen.",
+    "retry": "Erneut versuchen"
+  }
+}
