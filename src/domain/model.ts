@@ -48,6 +48,26 @@ export const CONDUCTORS = ['L1', 'L2', 'L3', 'N', 'PE'] as const
 // position of a changeover switch that feeds nothing
 export const POSITION_OFF = '0'
 
+// terminal block housings as sold; the svg ids are gradients/patterns from PanelDefs
+export const BLOCK_COLORS: Record<string, string> = {
+  brown: '#7a4a2a',
+  black: '#2b2b2b',
+  grey: '#8f8f8f',
+  blue: 'url(#n-base)',
+  'green-yellow': 'url(#pe-base)',
+  red: '#b91c1c',
+  white: '#e8e8e2',
+}
+// IEC 60445 conductor colours
+const CONDUCTOR_COLOR: Record<string, string> = { L1: 'brown', L2: 'black', L3: 'grey', N: 'blue', PE: 'green-yellow' }
+
+// the colour name a terminal block shows: set by hand, else the one conductor all its terminals share
+export function blockColor(d: Pick<Device, 'color' | 'terminals'>): string | undefined {
+  if (d.color) return d.color
+  const cs = new Set(d.terminals.map((t) => t.conductor).filter(Boolean))
+  return cs.size === 1 ? CONDUCTOR_COLOR[[...cs][0]!] : undefined
+}
+
 export const BUS_SYSTEMS =['knx', 'dali', 'modbus', 'zigbee', 'zwave', 'matter', 'wirenboard', 'other'] as const
 export const CHANNEL_FUNCTIONS = ['switch', 'dimmer', 'blind', 'heating', 'hvac', 'input', 'other'] as const
 

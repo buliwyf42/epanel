@@ -889,7 +889,8 @@
       "suggestTask": "рекомендуем",
       "createTask": "Создать задание",
       "joinTask": "Добавить к заданию",
-      "leaveTask": "Убрать из задания"
+      "leaveTask": "Убрать из задания",
+      "color": "Colour"
     },
     "smart": {
       "title": "Шина умного дома",

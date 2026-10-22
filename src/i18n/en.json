@@ -889,7 +889,8 @@
       "suggestTask": "recommended",
       "createTask": "Create task",
       "joinTask": "Add to task",
-      "leaveTask": "Remove from task"
+      "leaveTask": "Remove from task",
+      "color": "Colour"
     },
     "smart": {
       "title": "Smart-home bus",
@@ -1115,6 +1116,16 @@
       "fromLinks": "from terminal links",
       "position": "Switch position",
       "positionOff": "0 (off)"
+    },
+    "colorAuto": "Auto (from conductor)",
+    "color": {
+      "brown": "brown",
+      "black": "black",
+      "grey": "grey",
+      "blue": "blue",
+      "green-yellow": "green-yellow",
+      "red": "red",
+      "white": "white"
     }
   },
   "landing": {

@@ -64,6 +64,8 @@ export const Device = z.object({
   poles: z.number().int().min(1).max(4).default(1),
   // DIN modules of 17.5 mm; derived from type and poles when omitted
   width: z.number().positive().max(12).optional(),
+  // housing colour of a terminal block: a BLOCK_COLORS name or any CSS colour; derived from the conductor when omitted
+  color: z.string().optional(),
   // milliamperes
   leakage: z.number().positive().optional(),
   rcdClass: z.enum(['AC', 'A', 'F', 'B']).optional(),

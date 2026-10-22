@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SMART_TYPES, type Device } from '@/domain/model'
+import { BLOCK_COLORS, blockColor, SMART_TYPES, type Device } from '@/domain/model'
 import { useData } from '@/stores/data'
 import { HEIGHT, MODULE } from './geometry'
 
@@ -44,7 +44,34 @@ const leverColor = computed(() => {
   return 'url(#lever-dark)'
 })
 
-const terminalsTop = computed(() => Array.from({ length: Math.max(1, Math.round(props.width)) }, (_, i) => i))
+// screws follow the terminals when they are known, otherwise one per module as before
+const perModule = computed(() => Math.max(1, Math.round(props.width)))
+const sideCount = (side: 'top' | 'bottom') => props.device.terminals.filter((x) => x.side === side).length
+const screwsTop = computed(() => (props.device.terminals.length ? sideCount('top') : perModule.value))
+const screwsBottom = computed(() => (props.device.terminals.length ? sideCount('bottom') : perModule.value))
+const screwX = (i: number, n: number) => (i + 0.5) * (W.value / n)
+
+// terminal block: a coloured housing with a grid of clamp points, top-side terminals in the upper rows
+const blockFill = computed(() => {
+  const c = blockColor(props.device)
+  return c ? (BLOCK_COLORS[c] ?? c) : '#9aa4b2'
+})
+const blockDark = computed(() => ['black', 'brown', 'blue', 'red'].includes(blockColor(props.device) ?? ''))
+const blockLabel = computed(() => {
+  const cs = new Set(props.device.terminals.map((x) => x.conductor).filter(Boolean))
+  return cs.size === 1 ? [...cs][0] : ''
+})
+const blockHoles = computed(() => {
+  const ts = [...props.device.terminals].sort((a, b) => (a.side === b.side ? 0 : a.side === 'top' ? -1 : 1))
+  const n = ts.length || 6
+  const cols = Math.max(1, Math.min(n, Math.floor((W.value - 6) / 16)))
+  const rows = Math.ceil(n / cols)
+  const top = 46
+  const bottom = HEIGHT - 52
+  const dx = (W.value - 6) / cols
+  const dy = (bottom - top) / rows
+  return Array.from({ length: n }, (_, i) => ({ x: 3 + dx * ((i % cols) + 0.5), y: top + dy * (Math.floor(i / cols) + 0.5), r: Math.max(2, Math.min(6, dx / 2 - 2, dy / 2 - 2)), id: ts[i]?.id, linked: !!ts[i]?.to }))
+})
 
 // no live data yet: the relay shows the nominal supply voltage and the meter no reading,
 // so nothing on screen can be mistaken for a measurement
@@ -86,12 +113,14 @@ const busColor = computed(() => {
       <rect x="1" y="0" :width="W - 2" :height="HEIGHT" rx="4" fill="url(#body)" stroke="#a8a8a0" stroke-width="1" />
       <rect x="3" y="3" :width="W - 6" height="26" rx="2" fill="url(#recess)" />
       <rect x="3" :y="HEIGHT - 29" :width="W - 6" height="26" rx="2" fill="url(#recess)" />
-      <g v-for="i in terminalsTop" :key="'t' + i">
-        <circle :cx="i * MODULE + MODULE / 2" cy="16" r="7" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.8" />
-        <line :x1="i * MODULE + MODULE / 2 - 5" y1="16" :x2="i * MODULE + MODULE / 2 + 5" y2="16" stroke="#55554f" stroke-width="1.6" />
-        <circle :cx="i * MODULE + MODULE / 2" :cy="HEIGHT - 16" r="7" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.8" />
-        <line :x1="i * MODULE + MODULE / 2 - 5" :y1="HEIGHT - 16" :x2="i * MODULE + MODULE / 2 + 5" :y2="HEIGHT - 16" stroke="#55554f" stroke-width="1.6" />
-        <circle v-if="energized" :cx="i * MODULE + MODULE / 2" cy="16" r="3" fill="var(--live)" class="live-dot" />
+      <g v-for="i in screwsTop" :key="'t' + i">
+        <circle :cx="screwX(i - 1, screwsTop)" cy="16" r="7" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.8" />
+        <line :x1="screwX(i - 1, screwsTop) - 5" y1="16" :x2="screwX(i - 1, screwsTop) + 5" y2="16" stroke="#55554f" stroke-width="1.6" />
+        <circle v-if="energized" :cx="screwX(i - 1, screwsTop)" cy="16" r="3" fill="var(--live)" class="live-dot" />
+      </g>
+      <g v-for="i in screwsBottom" :key="'b' + i">
+        <circle :cx="screwX(i - 1, screwsBottom)" :cy="HEIGHT - 16" r="7" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.8" />
+        <line :x1="screwX(i - 1, screwsBottom) - 5" :y1="HEIGHT - 16" :x2="screwX(i - 1, screwsBottom) + 5" :y2="HEIGHT - 16" stroke="#55554f" stroke-width="1.6" />
       </g>
       <rect x="2" y="40" :width="W - 4" :height="HEIGHT - 80" rx="3" fill="url(#shoulder)" stroke="#c4c4bc" stroke-width="0.6" />
     </template>
@@ -176,10 +205,13 @@ const busColor = computed(() => {
     </template>
 
     <template v-else-if="t === 'terminal'">
-      <g v-for="i in Math.max(1, Math.round(width * 2))" :key="'k' + i">
-        <rect :x="(i - 1) * (W / Math.max(1, Math.round(width * 2))) + 1" y="40" :width="W / Math.max(1, Math.round(width * 2)) - 2" :height="HEIGHT - 80" rx="2" fill="#9aa4b2" stroke="#5b6470" />
-        <circle :cx="(i - 0.5) * (W / Math.max(1, Math.round(width * 2)))" cy="60" r="4" fill="url(#screw)" />
+      <rect x="1" y="34" :width="W - 2" :height="HEIGHT - 68" rx="4" :fill="blockFill" stroke="#334" stroke-opacity="0.45" />
+      <g v-for="(h, i) in blockHoles" :key="'k' + i">
+        <circle :cx="h.x" :cy="h.y" :r="h.r + 1.5" fill="#1f2226" opacity="0.55" />
+        <circle :cx="h.x" :cy="h.y" :r="h.r" fill="url(#screw)" stroke="#6b6b66" stroke-width="0.6" />
+        <circle v-if="h.linked" :cx="h.x" :cy="h.y" r="1.6" fill="#f5c542" />
       </g>
+      <text v-if="blockLabel" :x="W / 2" :y="HEIGHT - 40" text-anchor="middle" class="busl" :style="{ fill: blockDark ? '#f4f4f0' : '#1b1b1b' }">{{ blockLabel }}</text>
     </template>
 
     <!-- fuse holder: the carrier swings down to open; the window shows a blown cartridge -->

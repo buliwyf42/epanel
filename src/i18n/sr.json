@@ -889,7 +889,8 @@
       "suggestTask": "preporučeno",
       "createTask": "Napravi zadatak",
       "joinTask": "Dodaj u zadatak",
-      "leaveTask": "Ukloni iz zadatka"
+      "leaveTask": "Ukloni iz zadatka",
+      "color": "Colour"
     },
     "smart": {
       "title": "Magistrala pametne kuće",

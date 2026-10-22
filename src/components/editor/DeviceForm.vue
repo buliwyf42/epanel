@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
-import { DEVICE_TYPES, SMART_TYPES, type Device } from '@/domain/model'
+import { BLOCK_COLORS, DEVICE_TYPES, SMART_TYPES, type Device } from '@/domain/model'
 import { findItem, renameDevice } from '@/editor/ops'
 import { joinTemplateTask, templateFor } from '@/editor/taskTemplates'
 import { useDraft } from '@/composables/useDraft'
@@ -132,6 +132,15 @@ function circuit() {
           </Select>
         </FormRow>
         <FormRow :label="t('editor.panel.width')"><NumberInput v-model="device.width" optional :max="12" :placeholder="t('editor.auto')" /></FormRow>
+        <FormRow v-if="device.type === 'terminal'" :label="t('editor.panel.color')">
+          <Select :model-value="device.color ?? '__'" @update:model-value="(v) => (device.color = v === '__' ? undefined : (v as string))">
+            <SelectTrigger class="w-full"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="__">{{ t('editor.colorAuto') }}</SelectItem>
+              <SelectItem v-for="c in Object.keys(BLOCK_COLORS)" :key="c" :value="c">{{ t(`editor.color.${c}`) }}</SelectItem>
+            </SelectContent>
+          </Select>
+        </FormRow>
         <template v-if="isRcd">
           <FormRow :label="t('device.field.leakage')"><NumberInput v-model="device.leakage" optional suffix="mA" /></FormRow>
           <FormRow :label="t('editor.panel.rcdClass')">

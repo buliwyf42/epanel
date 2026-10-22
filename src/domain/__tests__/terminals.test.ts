@@ -104,3 +104,15 @@ describe('terminal checks', () => {
     expect(runChecks(d, buildGraph(d)).map((r) => r.code)).not.toContain('conductor-mismatch')
   })
 })
+
+describe('terminal block colour', async () => {
+  const { blockColor } = await import('../model')
+  it('takes the hand-set colour, else the one shared conductor, else nothing', () => {
+    const term = (c?: string) => ({ id: '1', side: 'top', role: 'bus', ...(c ? { conductor: c } : {}) }) as never
+    expect(blockColor({ color: 'red', terminals: [term('N')] })).toBe('red')
+    expect(blockColor({ terminals: [term('L1'), term('L1')] })).toBe('brown')
+    expect(blockColor({ terminals: [term('PE')] })).toBe('green-yellow')
+    expect(blockColor({ terminals: [term('L1'), term('L2')] })).toBeUndefined()
+    expect(blockColor({ terminals: [] })).toBeUndefined()
+  })
+})

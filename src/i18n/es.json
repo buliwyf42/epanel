@@ -889,7 +889,8 @@
       "suggestTask": "recomendado",
       "createTask": "Crear tarea",
       "joinTask": "Añadir a la tarea",
-      "leaveTask": "Quitar de la tarea"
+      "leaveTask": "Quitar de la tarea",
+      "color": "Colour"
     },
     "smart": {
       "title": "Bus domótico",
