@@ -1095,26 +1095,26 @@
       "sessionExpired": "Prijava na GitHub je istekla. Prijavite se ponovo."
     },
     "terminals": {
-      "title": "Terminals",
-      "fromTemplate": "Standard terminals",
-      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
-      "id": "Terminal",
-      "top": "top",
-      "bottom": "bottom",
+      "title": "Kleme",
+      "fromTemplate": "Standardne kleme",
+      "empty": "Još nema klema. Dodajte standardni skup za ovaj tip uređaja, pa za svaku klemu izaberite s čim je povezana.",
+      "id": "Klema",
+      "top": "gore",
+      "bottom": "dole",
       "role": {
-        "in": "input",
-        "out": "output",
-        "bus": "through (block)"
+        "in": "ulaz",
+        "out": "izlaz",
+        "bus": "prolazna (blok)"
       },
-      "to": "Connected to",
-      "none": "not connected",
-      "linkedFrom": "also wired from",
-      "conductor": "Conductor",
-      "group": "Feed group",
-      "color": "Wire colour",
-      "fromLinks": "from terminal links",
-      "position": "Switch position",
-      "positionOff": "0 (off)"
+      "to": "Povezana sa",
+      "none": "nije povezana",
+      "linkedFrom": "povezano i sa",
+      "conductor": "Provodnik",
+      "group": "Grupa napajanja",
+      "color": "Boja provodnika",
+      "fromLinks": "iz veza klema",
+      "position": "Položaj preklopke",
+      "positionOff": "0 (isključeno)"
     }
   },
   "landing": {

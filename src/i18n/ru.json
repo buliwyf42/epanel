@@ -1095,26 +1095,26 @@
       "sessionExpired": "Вход в GitHub истёк. Войдите снова."
     },
     "terminals": {
-      "title": "Terminals",
-      "fromTemplate": "Standard terminals",
-      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
-      "id": "Terminal",
-      "top": "top",
-      "bottom": "bottom",
+      "title": "Клеммы",
+      "fromTemplate": "Стандартные клеммы",
+      "empty": "Клемм пока нет. Добавьте стандартный набор для этого типа устройства и для каждой клеммы выберите, с чем она соединена.",
+      "id": "Клемма",
+      "top": "сверху",
+      "bottom": "снизу",
       "role": {
-        "in": "input",
-        "out": "output",
-        "bus": "through (block)"
+        "in": "вход",
+        "out": "выход",
+        "bus": "проходная (блок)"
       },
-      "to": "Connected to",
-      "none": "not connected",
-      "linkedFrom": "also wired from",
-      "conductor": "Conductor",
-      "group": "Feed group",
-      "color": "Wire colour",
-      "fromLinks": "from terminal links",
-      "position": "Switch position",
-      "positionOff": "0 (off)"
+      "to": "Соединена с",
+      "none": "не подключена",
+      "linkedFrom": "также подключено от",
+      "conductor": "Проводник",
+      "group": "Группа питания",
+      "color": "Цвет провода",
+      "fromLinks": "по соединениям клемм",
+      "position": "Положение переключателя",
+      "positionOff": "0 (выкл.)"
     }
   },
   "landing": {

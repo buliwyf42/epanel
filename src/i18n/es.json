@@ -1095,26 +1095,26 @@
       "sessionExpired": "La sesión de GitHub ha caducado. Vuelve a entrar."
     },
     "terminals": {
-      "title": "Terminals",
-      "fromTemplate": "Standard terminals",
-      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
-      "id": "Terminal",
-      "top": "top",
-      "bottom": "bottom",
+      "title": "Bornes",
+      "fromTemplate": "Bornes estándar",
+      "empty": "Aún no hay bornes. Añade el juego estándar para este tipo de dispositivo y elige para cada borne a qué está conectado.",
+      "id": "Borne",
+      "top": "arriba",
+      "bottom": "abajo",
       "role": {
-        "in": "input",
-        "out": "output",
-        "bus": "through (block)"
+        "in": "entrada",
+        "out": "salida",
+        "bus": "paso (bloque)"
       },
-      "to": "Connected to",
-      "none": "not connected",
-      "linkedFrom": "also wired from",
+      "to": "Conectado a",
+      "none": "sin conectar",
+      "linkedFrom": "también conectado desde",
       "conductor": "Conductor",
-      "group": "Feed group",
-      "color": "Wire colour",
-      "fromLinks": "from terminal links",
-      "position": "Switch position",
-      "positionOff": "0 (off)"
+      "group": "Grupo de alimentación",
+      "color": "Color del cable",
+      "fromLinks": "según las conexiones de bornes",
+      "position": "Posición del conmutador",
+      "positionOff": "0 (apagado)"
     }
   },
   "landing": {
