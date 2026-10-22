@@ -750,7 +750,8 @@
     "printHint": "Štampajte u razmeri 100% bez opcije „prilagodi stranici“. Svaka ćelija je 17,5 mm po modulu.",
     "scan": "Usmerite kameru telefona ovde: videćete koji osigurač šta isključuje i šta da radite ako nešto izbaci.",
     "emergencyLine": "Izbacilo? Skeniraj me",
-    "row": "Red {n}"
+    "row": "Red {n}",
+    "terminalPlan": "Plan klema"
   },
   "qr": {
     "description": "Skenirajte kamerom telefona.",

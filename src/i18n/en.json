@@ -750,7 +750,8 @@
     "printHint": "Print at 100% scale without \"fit to page\". Each cell is 17.5 mm per module.",
     "scan": "Point your phone camera here: see which breaker cuts what and what to do if something trips.",
     "emergencyLine": "Tripped? Scan me",
-    "row": "Row {n}"
+    "row": "Row {n}",
+    "terminalPlan": "Terminal plan"
   },
   "qr": {
     "description": "Scan with your phone camera.",

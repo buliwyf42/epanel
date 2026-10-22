@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import QrCode from '@/components/common/QrCode.vue'
 import { useText } from '@/composables/useText'
+import { refKey } from '@/domain/terminals'
 import { appUrl } from '@/lib/appUrl'
 import { printPage } from '@/platform'
 import { useData } from '@/stores/data'
@@ -14,6 +15,7 @@ const { t, tx } = useText()
 const withKey = ref(true)
 const perDeviceQr = ref(false)
 const showLabels = ref(true)
+const showTerminalPlan = ref(false)
 // millimetres; one DIN module is 17.5 mm
 const MODULE_MM = 17.5
 const labelHeight = ref(14)
@@ -41,6 +43,19 @@ const mainUrl = computed(() => appUrl(data.data?.meta.publicUrl, '/', withKey.va
 const deviceUrl = (id: string) => appUrl(data.data?.meta.publicUrl, `/d/${id}`, withKey.value ? data.password : null)
 const noBase = computed(() => !mainUrl.value.startsWith('http'))
 
+// one table per device with entered terminals; a link is stored on one end, the index shows it from both
+const terminalPlan = computed(() =>
+  (data.data?.devices ?? [])
+    .filter((d) => d.terminals.length)
+    .map((d) => ({
+      device: d,
+      rows: d.terminals.map((tt) => ({
+        terminal: tt,
+        links: (data.graph?.terminals.links.get(refKey(d.id, tt.id)) ?? []).map((o) => refKey(o.device.id, o.terminal.id)),
+      })),
+    })),
+)
+
 function print() {
   void printPage()
 }
@@ -62,6 +77,7 @@ function rating(id: string) {
         <label class="flex items-center gap-2 text-sm"><Switch v-model="withKey" /> {{ t('qr.withPassword') }}</label>
         <label class="flex items-center gap-2 text-sm"><Switch v-model="showLabels" /> {{ t('labels.strips') }}</label>
         <label class="flex items-center gap-2 text-sm"><Switch v-model="perDeviceQr" /> {{ t('labels.perDevice') }}</label>
+        <label v-if="terminalPlan.length" class="flex items-center gap-2 text-sm"><Switch v-model="showTerminalPlan" /> {{ t('labels.terminalPlan') }}</label>
         <label class="flex items-center gap-2 text-sm">
           {{ t('labels.height') }}
           <input v-model.number="labelHeight" type="number" min="8" max="30" class="w-16 rounded-md border bg-transparent px-2 py-1 text-sm" />
@@ -109,6 +125,33 @@ function rating(id: string) {
         </template>
       </section>
 
+      <section v-if="showTerminalPlan && terminalPlan.length" class="space-y-[4mm] bg-white p-[2mm] text-black">
+        <h2 class="text-[4mm] font-semibold">{{ t('labels.terminalPlan') }} · {{ tx(data.data?.meta.title) }}</h2>
+        <table v-for="p in terminalPlan" :key="p.device.id" class="plan w-full border-collapse text-[2.6mm]">
+          <caption class="pb-[1mm] text-left text-[3mm] font-semibold">
+            <span class="font-mono">{{ p.device.id }}</span> · {{ tx(p.device.label) }}
+          </caption>
+          <thead>
+            <tr>
+              <th>{{ t('editor.terminals.id') }}</th>
+              <th />
+              <th>{{ t('editor.terminals.conductor') }}</th>
+              <th>{{ t('editor.terminals.to') }}</th>
+              <th>{{ t('device.field.section') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="r in p.rows" :key="r.terminal.id">
+              <td class="font-mono">{{ r.terminal.id }}</td>
+              <td>{{ t(`editor.terminals.${r.terminal.side}`) }} · {{ t(`editor.terminals.role.${r.terminal.role}`) }}</td>
+              <td>{{ r.terminal.conductor ?? '' }}</td>
+              <td class="font-mono">{{ r.links.join(', ') || '—' }}</td>
+              <td>{{ r.terminal.crossSection ? `${r.terminal.crossSection} ${t('units.mm2')}` : '' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
       <section v-if="perDeviceQr" class="grid grid-cols-[repeat(auto-fill,minmax(28mm,1fr))] gap-[3mm]">
         <div v-for="d in data.data?.devices.filter((x) => x.type !== 'bus' && x.type !== 'terminal')" :key="d.id" class="flex flex-col items-center gap-[1mm] rounded-[2mm] border-[0.3mm] border-black bg-white p-[2mm] text-black">
           <div class="size-[22mm]"><QrCode :value="deviceUrl(d.id)" :margin="0" /></div>
@@ -125,11 +168,18 @@ function rating(id: string) {
     margin: 0;
   }
   .sticker,
-  .strip-wrap {
+  .strip-wrap,
+  .plan {
     break-inside: avoid;
   }
   .strip-wrap {
     overflow: visible;
   }
+}
+.plan th,
+.plan td {
+  border: 0.2mm solid rgb(0 0 0 / 0.5);
+  padding: 0.6mm 1.2mm;
+  text-align: left;
 }
 </style>

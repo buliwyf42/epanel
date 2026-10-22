@@ -750,7 +750,8 @@
     "printHint": "Imprime al 100 % sin «ajustar a la página». Cada celda mide 17,5 mm por módulo.",
     "scan": "Apunta aquí con la cámara del móvil: verás qué automático corta qué y qué hacer si salta algo.",
     "emergencyLine": "¿Ha saltado? Escanéame",
-    "row": "Fila {n}"
+    "row": "Fila {n}",
+    "terminalPlan": "Plano de bornas"
   },
   "qr": {
     "description": "Escanéalo con la cámara del móvil.",
