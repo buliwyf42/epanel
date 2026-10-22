@@ -3,7 +3,7 @@ import { viewerOnly } from '@/platform'
 import { computed, defineAsyncComponent, ref } from 'vue'
 import { useOpenedOnce } from '@/composables/useOpenedOnce'
 import { useRouter } from 'vue-router'
-import { ArrowDownToLine, ArrowUpFromLine, Map as MapIcon, MapPin, MessageSquarePlus, Power, QrCode, Send } from '@lucide/vue'
+import { ArrowDownToLine, ArrowUpFromLine, ExternalLink, Map as MapIcon, MapPin, MessageSquarePlus, Power, QrCode, Send } from '@lucide/vue'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import DeviceChip from '@/components/common/DeviceChip.vue'
@@ -61,8 +61,16 @@ const specs = computed(() => {
   if (d.brand || d.model) rows.push([t('device.field.model'), [d.brand, d.model].filter(Boolean).join(' ')])
   if (d.serial) rows.push([t('device.field.serial'), d.serial])
   if (d.phase) rows.push([t('device.field.phase'), d.phase])
+  if (d.entity) rows.push([t('device.field.entity'), d.entity])
   if (rcd.value && rcd.value.id !== d.id) rows.push([t('device.field.rcd'), `${rcd.value.id} · ${rcd.value.leakage ?? '?'} mA`])
   return rows
+})
+
+// only http(s): the base URL comes from the data file, which anyone with the password can hand around
+const haLink = computed(() => {
+  const base = data.data?.meta.homeAssistantUrl?.trim().replace(/\/+$/, '')
+  const entity = device.value?.entity
+  return base && entity && /^https?:\/\//i.test(base) ? `${base}/history?entity_id=${encodeURIComponent(entity)}` : undefined
 })
 
 const utilPct = computed(() => Math.round((load.value?.utilization ?? 0) * 100))
@@ -158,6 +166,9 @@ function simulateOff() {
           <dd class="text-right font-medium">{{ v }}</dd>
         </div>
       </dl>
+      <a v-if="haLink" :href="haLink" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1.5 text-sm text-primary hover:underline">
+        <ExternalLink class="size-4" /> {{ t('device.openInHa') }}
+      </a>
     </section>
 
     <section v-if="load && load.nameplateW > 0">

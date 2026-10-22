@@ -229,6 +229,8 @@ export const PanelData = z.object({
     location: LocalizedText.optional(),
     // where the web app is published, e.g. https://user.github.io/panel/app/ — QR codes point here
     publicUrl: z.string().optional(),
+    // Home Assistant base URL, e.g. https://homeassistant.local:8123 — devices with an `entity` link to its history
+    homeAssistantUrl: z.string().optional(),
     contacts: z.array(Contact).default([]),
   }),
   supply: z.object({

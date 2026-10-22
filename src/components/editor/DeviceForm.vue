@@ -183,6 +183,9 @@ function circuit() {
       <div class="grid grid-cols-2 gap-3">
         <FormRow :label="t('editor.panel.brand')"><Input :model-value="device.brand ?? ''" placeholder="ABB" @update:model-value="(v) => (device.brand = String(v) || undefined)" /></FormRow>
         <FormRow :label="t('editor.panel.model')"><Input :model-value="device.model ?? ''" placeholder="S201 C16" @update:model-value="(v) => (device.model = String(v) || undefined)" /></FormRow>
+        <FormRow :label="t('device.field.entity')" :hint="t('device.field.entityHint')" class="col-span-2">
+          <Input :model-value="device.entity ?? ''" class="font-mono" placeholder="sensor.…" @update:model-value="(v) => (device.entity = String(v).trim() || undefined)" />
+        </FormRow>
         <FormRow v-if="device.type === 'meter' || device.serial" :label="t('device.field.serial')" class="col-span-2">
           <Input :model-value="device.serial ?? ''" class="font-mono" @update:model-value="(v) => (device.serial = String(v) || undefined)" />
         </FormRow>

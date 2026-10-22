@@ -26,6 +26,7 @@ function addContact() {
       <FormRow :label="t('editor.general.enclosure')"><Input v-model="d.meta.enclosure" /></FormRow>
       <FormRow :label="t('editor.general.address')" :hint="t('editor.general.addressHint')"><Input v-model="d.meta.address" /></FormRow>
       <FormRow :label="t('editor.general.publicUrl')" :hint="t('editor.general.publicUrlHint')"><Input v-model="d.meta.publicUrl" placeholder="https://user.github.io/panel/app/" /></FormRow>
+      <FormRow :label="t('editor.general.homeAssistantUrl')" :hint="t('editor.general.homeAssistantUrlHint')"><Input v-model="d.meta.homeAssistantUrl" placeholder="http://homeassistant.local:8123" /></FormRow>
     </section>
 
     <section data-tour="gen-supply">
