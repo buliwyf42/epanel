@@ -14,7 +14,7 @@ It has three parts:
 
 A site made for a real panel is a viewer only: no landing page, no demo and no editor. Its root forwards to `/app/`, which asks for the password, or opens the panel right away when the password comes in the QR link. A static site has nowhere to save changes, so maintenance marks and device notes are added in the desktop app and appear on the site after the next publish. Such sites are made from the [epanel-site](https://github.com/swchck/epanel-site) template. It holds only the encrypted `panel.enc.json` and a workflow that builds the viewer from this repository (`VITE_SITE=viewer`) with that file inside, so every site picks up viewer fixes on its next publish.
 
-The interface is available in Russian, English, Serbian (Latin) and Spanish, with light and dark themes.
+The interface is available in Russian, English, Serbian (Latin), Spanish and German, with light and dark themes.
 
 ## Features
 
@@ -92,7 +92,7 @@ npm run desktop        # Tauri in development mode
 npm test               # vitest
 npm run lint
 npm run typecheck
-npm run i18n:check     # every key translated into all 4 languages
+npm run i18n:check     # every key translated into all 5 languages
 npm run build          # landing + app into dist/
 npm run desktop:build  # desktop build
 npm run seed:demo      # rebuild the demo files from data/*.yaml
