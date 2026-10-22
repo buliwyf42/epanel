@@ -117,3 +117,32 @@ describe('terminal rename', () => {
     expect(referenceIssues(d)).toEqual([])
   })
 })
+
+describe('several feeders per group', () => {
+  it('is powered only while every live feeder is', () => {
+    const d = tiny({
+      rows: [{ id: 'r1', modules: 12, items: [] }],
+      points: [],
+      devices: [
+        { id: 'A', type: 'mcb', terminals: [{ id: '2', side: 'bottom', role: 'out' }] },
+        { id: 'B', type: 'mcb', terminals: [{ id: '2', side: 'bottom', role: 'out' }] },
+        {
+          id: 'D',
+          type: 'mcb',
+          poles: 2,
+          terminals: [
+            { id: '1', role: 'in', to: 'A.2' },
+            { id: '3', role: 'in', to: 'B.2' },
+          ],
+        },
+      ],
+    })
+    const g = buildGraph(d)
+    expect(g.upstreamOf('D')).toBe('A')
+    expect(g.feedersOf('D')).toEqual(['A', 'B'])
+    expect(g.isFed('D', new Set())).toBe(true)
+    // switching off the second feeder, not the tree parent, still cuts D
+    expect(g.isFed('D', new Set(['B']))).toBe(false)
+    expect(g.isFed('D', new Set(['A']))).toBe(false)
+  })
+})
