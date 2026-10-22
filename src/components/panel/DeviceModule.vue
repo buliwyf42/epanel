@@ -54,7 +54,8 @@ const screwX = (i: number, n: number) => (i + 0.5) * (W.value / n)
 const labelsTop = computed(() => props.device.terminals.filter((x) => x.side === 'top').map((x) => x.id))
 const labelsBottom = computed(() => props.device.terminals.filter((x) => x.side === 'bottom').map((x) => x.id))
 
-// terminal block: a coloured housing with a grid of clamp points, top-side terminals in the upper rows
+// distribution block: a coloured housing, top-side clamps in the upper row and bottom-side clamps in the lower one;
+// a block without terminals shows no clamps
 const blockFill = computed(() => {
   const c = blockColor(props.device)
   return c ? (BLOCK_COLORS[c] ?? c) : '#9aa4b2'
@@ -65,16 +66,12 @@ const blockLabel = computed(() => {
   return cs.size === 1 ? [...cs][0] : ''
 })
 const blockHoles = computed(() => {
-  const ts = [...props.device.terminals].sort((a, b) => (a.side === b.side ? 0 : a.side === 'top' ? -1 : 1))
-  const n = ts.length || 6
-  // 13 px per clamp keeps a 1.4-module block at 3 × 2 like the real ones; narrower blocks fall back to fewer columns
-  const cols = Math.max(1, Math.min(n, Math.floor((W.value - 6) / 13)))
-  const rows = Math.ceil(n / cols)
-  const top = 46
-  const bottom = HEIGHT - 52
-  const dx = (W.value - 6) / cols
-  const dy = (bottom - top) / rows
-  return Array.from({ length: n }, (_, i) => ({ x: 3 + dx * ((i % cols) + 0.5), y: top + dy * (Math.floor(i / cols) + 0.5), r: Math.max(2, Math.min(6, dx / 2 - 2, dy / 2 - 2)), id: ts[i]?.id, linked: !!ts[i]?.to }))
+  const row = (side: 'top' | 'bottom', y: number) => {
+    const ts = props.device.terminals.filter((x) => x.side === side)
+    const dx = (W.value - 6) / ts.length
+    return ts.map((x, i) => ({ x: 3 + dx * (i + 0.5), y, r: Math.max(1.5, Math.min(6, dx / 2 - 2)), id: x.id, linked: !!x.to }))
+  }
+  return [...row('top', 64), ...row('bottom', HEIGHT - 64)]
 })
 
 // no live data yet: the relay shows the nominal supply voltage and the meter no reading,
@@ -113,7 +110,7 @@ const busColor = computed(() => {
       class="sel-ring"
     />
 
-    <template v-if="t !== 'bus' && t !== 'terminal'">
+    <template v-if="t !== 'bus' && t !== 'terminal' && t !== 'distribution-block'">
       <rect x="1" y="0" :width="W - 2" :height="HEIGHT" rx="4" fill="url(#body)" stroke="#a8a8a0" stroke-width="1" />
       <rect x="3" y="3" :width="W - 6" height="26" rx="2" fill="url(#recess)" />
       <rect x="3" :y="HEIGHT - 29" :width="W - 6" height="26" rx="2" fill="url(#recess)" />
@@ -211,6 +208,13 @@ const busColor = computed(() => {
     </template>
 
     <template v-else-if="t === 'terminal'">
+      <g v-for="i in Math.max(1, Math.round(width * 2))" :key="'k' + i">
+        <rect :x="(i - 1) * (W / Math.max(1, Math.round(width * 2))) + 1" y="40" :width="W / Math.max(1, Math.round(width * 2)) - 2" :height="HEIGHT - 80" rx="2" fill="#9aa4b2" stroke="#5b6470" />
+        <circle :cx="(i - 0.5) * (W / Math.max(1, Math.round(width * 2)))" cy="60" r="4" fill="url(#screw)" />
+      </g>
+    </template>
+
+    <template v-else-if="t === 'distribution-block'">
       <rect x="1" y="34" :width="W - 2" :height="HEIGHT - 68" rx="4" :fill="blockFill" stroke="#334" stroke-opacity="0.45" />
       <g v-for="(h, i) in blockHoles" :key="'k' + i">
         <circle :cx="h.x" :cy="h.y" :r="h.r + 1.5" fill="#1f2226" opacity="0.55" />

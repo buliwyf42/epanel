@@ -14,7 +14,7 @@ const GROUPS: { id: string; types: DeviceType[] }[] = [
   { id: 'protection', types: ['mcb', 'rcd', 'rcbo', 'afdd', 'fuse', 'voltage-relay', 'spd'] },
   { id: 'control', types: ['meter', 'switch', 'contactor', 'impulse-relay', 'time-relay', 'dimmer', 'din-socket'] },
   { id: 'power', types: ['psu', 'ats', 'ups'] },
-  { id: 'wiring', types: ['bus', 'terminal'] },
+  { id: 'wiring', types: ['bus', 'terminal', 'distribution-block'] },
   { id: 'smart', types: ['actuator', 'bus-psu', 'bus-gateway', 'bus-io'] },
   { id: 'other', types: ['other'] },
 ]

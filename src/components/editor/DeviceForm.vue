@@ -132,7 +132,7 @@ function circuit() {
           </Select>
         </FormRow>
         <FormRow :label="t('editor.panel.width')"><NumberInput v-model="device.width" optional :max="12" :placeholder="t('editor.auto')" /></FormRow>
-        <FormRow v-if="device.type === 'terminal'" :label="t('editor.panel.color')">
+        <FormRow v-if="device.type === 'distribution-block'" :label="t('editor.panel.color')">
           <Select :model-value="device.color ?? '__'" @update:model-value="(v) => (device.color = v === '__' ? undefined : (v as string))">
             <SelectTrigger class="w-full"><SelectValue /></SelectTrigger>
             <SelectContent>
