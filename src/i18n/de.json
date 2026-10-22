@@ -120,6 +120,7 @@
       "din-socket": "Hutschienen-Steckdose",
       "bus": "Sammelschiene",
       "terminal": "Klemmblock",
+      "distribution-block": "Verteilerblock",
       "actuator": "Bus-Aktor",
       "bus-psu": "Bus-Spannungsversorgung",
       "bus-gateway": "Bus-Gateway",
@@ -146,6 +147,7 @@
       "din-socket": "Steckdose",
       "bus": "Schiene",
       "terminal": "Klemmen",
+      "distribution-block": "Verteilerbl.",
       "actuator": "Aktor",
       "bus-psu": "Bus-NT",
       "bus-gateway": "Gateway",
@@ -201,6 +203,7 @@
       "din-socket": "Steckdose im Verteiler, für Router oder Ladegerät",
       "bus": "N- oder PE-Schiene, Phasenschiene",
       "terminal": "Hutschienen-Klemmen zum Verbinden von Leitern",
+      "distribution-block": "Haupt- und Abzweigklemmen auf einer Schiene, z. B. ein Block je Phase, N und PE",
       "actuator": "Schaltaktor am Smart-Home-Bus: Licht, Rollläden, Heizung",
       "bus-psu": "Versorgt einen KNX- oder DALI-Bus",
       "bus-gateway": "Verbindet den Bus mit Netzwerk und App",
@@ -622,6 +625,10 @@
       "route-drop-midair": {
         "title": "Abstieg zum Punkt liegt nicht in einer Wand",
         "hint": "Leitungsweg {route} steigt oder fällt zu „{point}“, der mehr als 30 cm von einer Wand entfernt ist. Senkrechte Abschnitte verlaufen nur in Wänden: den Punkt an eine Wand verschieben oder die Leitung anders führen."
+      },
+      "conductor-mismatch": {
+        "title": "Leiter an einer Verbindung vertauscht",
+        "hint": "Klemme {terminal} von {device} führt {conductor}, {to} ist aber als {other} gekennzeichnet."
       }
     },
     "rules": {
@@ -789,7 +796,12 @@
       "file": "aus Datei",
       "new": "neues Projekt",
       "preview": "Vorschau aus dem Editor"
-    }
+    },
+    "panelTitle": "Verteileransicht",
+    "showScrews": "Klemmschrauben",
+    "showScrewsHint": "Schrauben über und unter jedem Gerät zeigen: wie eingetragen, sonst die Standardbelegung nach Polzahl.",
+    "showTerminalIds": "Klemmenbezeichnungen",
+    "showTerminalIdsHint": "Die Bezeichnungen der Klemmen neben den Schrauben anzeigen."
   },
   "editor": {
     "title": "Editor",
@@ -885,7 +897,8 @@
       "suggestTask": "empfohlen",
       "createTask": "Aufgabe anlegen",
       "joinTask": "Zur Aufgabe hinzufügen",
-      "leaveTask": "Aus Aufgabe entfernen"
+      "leaveTask": "Aus Aufgabe entfernen",
+      "color": "Farbe"
     },
     "smart": {
       "title": "Smart-Home-Bus",
@@ -1089,6 +1102,39 @@
       "advanced": "Erweitert: Branch und Dateipfad",
       "remember": "Auf diesem Gerät angemeldet bleiben",
       "sessionExpired": "Die GitHub-Anmeldung ist abgelaufen. Bitte erneut anmelden."
+    },
+    "terminals": {
+      "title": "Klemmen",
+      "fromTemplate": "Standardklemmen",
+      "empty": "Noch keine Klemmen. Den Standardsatz für diesen Gerätetyp hinzufügen und dann je Klemme wählen, womit sie verbunden ist.",
+      "id": "Klemme",
+      "top": "oben",
+      "bottom": "unten",
+      "role": {
+        "in": "Eingang",
+        "out": "Ausgang",
+        "bus": "Durchgang (Block)"
+      },
+      "to": "Verbunden mit",
+      "none": "nicht verbunden",
+      "linkedFrom": "auch verdrahtet von",
+      "conductor": "Leiter",
+      "group": "Einspeisegruppe",
+      "color": "Aderfarbe",
+      "fromLinks": "aus Klemmverbindungen",
+      "position": "Schaltstellung",
+      "positionOff": "0 (aus)",
+      "idTaken": "Diese Klemmenbezeichnung ist leer oder an diesem Gerät bereits vergeben."
+    },
+    "colorAuto": "Auto (aus Leiter)",
+    "color": {
+      "brown": "braun",
+      "black": "schwarz",
+      "grey": "grau",
+      "blue": "blau",
+      "green-yellow": "grün-gelb",
+      "red": "rot",
+      "white": "weiß"
     }
   },
   "landing": {
