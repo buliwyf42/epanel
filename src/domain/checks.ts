@@ -1,7 +1,7 @@
 import type { PowerGraph } from './graph'
 import { aggregateLoad, deviceLoad, pointsLoad } from './load'
 import type { Device, PanelData } from './model'
-import { RCD_TYPES, SMART_TYPES } from './model'
+import { RCD_TYPES, resolveRef, SMART_TYPES } from './model'
 import { routeIssues } from './routing'
 
 export type CheckLevel = 'error' | 'warn' | 'info'
@@ -47,6 +47,13 @@ export function runChecks(data: PanelData, g: PowerGraph): CheckResult[] {
   const placed = new Set(data.rows.flatMap((r) => r.items.filter((i): i is string => typeof i === 'string')))
 
   for (const id of g.cycles) out.push({ level: 'error', code: 'cycle', device: id, params: {} })
+
+  for (const d of data.devices)
+    for (const t of d.terminals) {
+      const o = t.to ? resolveRef(t.to, data.devices) : undefined
+      if (o && t.conductor && o.terminal.conductor && t.conductor !== o.terminal.conductor)
+        out.push({ level: 'error', code: 'conductor-mismatch', device: d.id, params: { terminal: t.id, conductor: t.conductor, to: t.to!, other: o.terminal.conductor } })
+    }
 
   for (const d of data.devices) {
     const section = d.circuit?.crossSection

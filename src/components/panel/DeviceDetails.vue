@@ -14,6 +14,7 @@ import { locate } from '@/domain/layout'
 import { deviceLoad } from '@/domain/load'
 import { isoDay } from '@/domain/maintenance'
 import type { PlanPoint } from '@/domain/model'
+import { refKey } from '@/domain/terminals'
 import { useText } from '@/composables/useText'
 import { useData } from '@/stores/data'
 import { useUi } from '@/stores/ui'
@@ -34,6 +35,13 @@ const pointIds = computed(() => new Set(points.value.map((p) => p.id)))
 const load = computed(() => (device.value && data.graph ? deviceLoad(data.graph, device.value, data.data!.supply.voltage) : null))
 const checks = computed(() => data.checks.filter((c) => c.device === props.id))
 const rcd = computed(() => data.graph?.rcdChain(props.id)[0])
+// each terminal with every device it is linked to, whichever end stored the link
+const terminalRows = computed(() =>
+  (device.value?.terminals ?? []).map((tt) => ({
+    tt,
+    links: (data.graph?.terminals.links.get(refKey(props.id, tt.id)) ?? []).map((o) => ({ device: o.device.id, ref: refKey(o.device.id, o.terminal.id) })),
+  })),
+)
 
 const byRoom = computed(() => {
   const m = new Map<string, PlanPoint[]>()
@@ -214,6 +222,23 @@ function simulateOff() {
           <button v-for="c in children" :key="c.id" @click="ui.select(c.id)"><DeviceChip :device="c" /></button>
         </div>
       </div>
+    </section>
+
+    <section v-if="terminalRows.length">
+      <h3 class="section-title">{{ t('editor.terminals.title') }}</h3>
+      <table class="w-full text-sm">
+        <tbody>
+          <tr v-for="r in terminalRows" :key="r.tt.id" class="border-t first:border-t-0">
+            <td class="py-1 pr-2 font-mono">{{ r.tt.id }}</td>
+            <td class="py-1 pr-2 text-xs text-muted-foreground">{{ t(`editor.terminals.role.${r.tt.role}`) }}{{ r.tt.group ? ` · ${r.tt.group}` : '' }}</td>
+            <td class="py-1 pr-2 font-mono text-xs">{{ r.tt.conductor ?? '' }}</td>
+            <td class="py-1 text-right">
+              <button v-for="l in r.links" :key="l.ref" class="ml-1 font-mono text-xs underline-offset-2 hover:underline" @click="ui.select(l.device)">{{ l.ref }}</button>
+              <span v-if="!r.links.length" class="text-xs text-muted-foreground">—</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section>

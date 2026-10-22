@@ -18,6 +18,9 @@ import LocalizedInput from './LocalizedInput.vue'
 import MarkdownTextarea from './MarkdownTextarea.vue'
 import NumberInput from './NumberInput.vue'
 import SmartForm from './SmartForm.vue'
+import TerminalsForm from './TerminalsForm.vue'
+import { buildTerminalIndex, effectiveUpstream, feedGroups } from '@/domain/terminals'
+import { POSITION_OFF } from '@/domain/model'
 
 const props = defineProps<{ id: string }>()
 const { d } = useDraft()
@@ -49,6 +52,13 @@ function commitId() {
     idDraft.value = old
   }
 }
+
+// a feeder named by terminal links overrides the hand-set one, so the select gives way to a read-only line
+const derivedUpstream = computed(() => {
+  const idx = buildTerminalIndex(d.value.devices)
+  return idx.feeds.has(device.value.id) ? effectiveUpstream(device.value, idx) : undefined
+})
+const groups = computed(() => feedGroups(device.value))
 
 const isRcd = computed(() => device.value.type === 'rcd' || device.value.type === 'rcbo')
 const hasCurve = computed(() => device.value.type === 'mcb' || device.value.type === 'rcbo')
@@ -143,7 +153,20 @@ function circuit() {
       <FormRow v-if="!placed || device.location" :label="t('editor.panel.location')">
         <LocalizedInput v-model="device.location" multiline :placeholder="t('editor.panel.locationPlaceholder')" />
       </FormRow>
-      <FormRow :label="t('editor.panel.upstream')">
+      <FormRow v-if="derivedUpstream" :label="t('editor.panel.upstream')">
+        <div class="rounded-md border px-3 py-2 text-sm"><span class="font-mono">{{ derivedUpstream }}</span> <span class="text-xs text-muted-foreground">· {{ t('editor.terminals.fromLinks') }}</span></div>
+      </FormRow>
+      <FormRow v-if="groups.length > 1" :label="t('editor.terminals.position')">
+        <Select :model-value="device.position ?? '__'" @update:model-value="(v) => (device.position = v === '__' ? undefined : (v as string))">
+          <SelectTrigger class="w-full"><SelectValue /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="__">—</SelectItem>
+            <SelectItem v-for="g in groups" :key="g" :value="g">{{ g }}</SelectItem>
+            <SelectItem :value="POSITION_OFF">{{ t('editor.terminals.positionOff') }}</SelectItem>
+          </SelectContent>
+        </Select>
+      </FormRow>
+      <FormRow v-else-if="!derivedUpstream" :label="t('editor.panel.upstream')">
         <Select :model-value="device.upstream ?? '__'" @update:model-value="(v) => (device.upstream = v === '__' ? undefined : (v as string))">
           <SelectTrigger class="w-full"><SelectValue /></SelectTrigger>
           <SelectContent>
@@ -175,6 +198,8 @@ function circuit() {
         <FormRow :label="t('device.field.length')"><NumberInput :model-value="device.circuit?.lengthM" optional allow-zero :suffix="t('units.m')" @update:model-value="(v) => (circuit().lengthM = v)" /></FormRow>
       </div>
     </section>
+
+    <TerminalsForm :id="device.id" />
 
     <SmartForm v-if="SMART_TYPES.includes(device.type) || device.smart" :id="device.id" />
 

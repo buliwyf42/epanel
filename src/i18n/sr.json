@@ -622,6 +622,10 @@
       "route-drop-midair": {
         "title": "Spust do tačke nije u zidu",
         "hint": "Trasa {route} se penje ili spušta do tačke „{point}“, a ona je dalje od 30 cm od zida. Uspravni delovi idu samo kroz zid: pomerite tačku uz zid ili vodite trasu drugačije."
+      },
+      "conductor-mismatch": {
+        "title": "Zamenjeni provodnici",
+        "hint": "Klema {terminal} uređaja {device} nosi {conductor}, a {to} je označena kao {other}."
       }
     },
     "rules": {
@@ -1089,6 +1093,28 @@
       "advanced": "Dodatno: grana i putanja do fajla",
       "remember": "Ostani prijavljen na ovom uređaju",
       "sessionExpired": "Prijava na GitHub je istekla. Prijavite se ponovo."
+    },
+    "terminals": {
+      "title": "Terminals",
+      "fromTemplate": "Standard terminals",
+      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
+      "id": "Terminal",
+      "top": "top",
+      "bottom": "bottom",
+      "role": {
+        "in": "input",
+        "out": "output",
+        "bus": "through (block)"
+      },
+      "to": "Connected to",
+      "none": "not connected",
+      "linkedFrom": "also wired from",
+      "conductor": "Conductor",
+      "group": "Feed group",
+      "color": "Wire colour",
+      "fromLinks": "from terminal links",
+      "position": "Switch position",
+      "positionOff": "0 (off)"
     }
   },
   "landing": {

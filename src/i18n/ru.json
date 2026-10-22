@@ -622,6 +622,10 @@
       "route-drop-midair": {
         "title": "Спуск к точке не по стене",
         "hint": "Трасса {route} поднимается или опускается к точке «{point}», а точка стоит дальше 30 см от стены. Вертикальные участки идут только по стенам: перенесите точку к стене или подведите трассу по-другому."
+      },
+      "conductor-mismatch": {
+        "title": "Перепутаны проводники",
+        "hint": "Клемма {terminal} устройства {device} — {conductor}, а {to} помечена как {other}."
       }
     },
     "rules": {
@@ -1089,6 +1093,28 @@
       "advanced": "Дополнительно: ветка и путь к файлу",
       "remember": "Оставаться в аккаунте на этом устройстве",
       "sessionExpired": "Вход в GitHub истёк. Войдите снова."
+    },
+    "terminals": {
+      "title": "Terminals",
+      "fromTemplate": "Standard terminals",
+      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
+      "id": "Terminal",
+      "top": "top",
+      "bottom": "bottom",
+      "role": {
+        "in": "input",
+        "out": "output",
+        "bus": "through (block)"
+      },
+      "to": "Connected to",
+      "none": "not connected",
+      "linkedFrom": "also wired from",
+      "conductor": "Conductor",
+      "group": "Feed group",
+      "color": "Wire colour",
+      "fromLinks": "from terminal links",
+      "position": "Switch position",
+      "positionOff": "0 (off)"
     }
   },
   "landing": {

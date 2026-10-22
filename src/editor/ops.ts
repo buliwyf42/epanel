@@ -1,4 +1,4 @@
-import { defaultWidth, type Device, type DeviceType, type PanelData, type RowItem } from '@/domain/model'
+import { defaultWidth, resolveRef, type Device, type DeviceType, type PanelData, type RowItem } from '@/domain/model'
 
 const ID_PREFIX: Record<DeviceType, string> = {
   mcb: 'QF',
@@ -72,6 +72,7 @@ export function addDevice(d: PanelData, type: DeviceType, rowIndex: number, at?:
     type,
     label: '',
     poles: 1,
+    terminals: [],
     tags: [],
     notes: [],
     photos: [],
@@ -92,6 +93,8 @@ export function removeDevice(d: PanelData, id: string) {
   for (const row of d.rows) row.items = row.items.filter((i) => i !== id)
   // children are re-attached to the removed device's feeder so the tree stays connected
   for (const x of d.devices) if (x.upstream === id) x.upstream = dev?.upstream
+  // links into the removed device would dangle; the other end keeps its terminal, just unlinked
+  for (const x of d.devices) for (const t of x.terminals) if (t.to?.startsWith(`${id}.`) && !resolveRef(t.to, d.devices)) t.to = undefined
   for (const p of d.points) if (p.device === id) p.device = undefined
   for (const r of d.routes) if (r.device === id) r.device = undefined
   for (const t of d.maintenance.tasks) t.devices = t.devices.filter((x) => x !== id)
@@ -106,6 +109,7 @@ export function renameDevice(d: PanelData, from: string, to: string): boolean {
   dev.id = to
   for (const row of d.rows) row.items = row.items.map((i) => (i === from ? to : i))
   for (const x of d.devices) if (x.upstream === from) x.upstream = to
+  for (const x of d.devices) for (const t of x.terminals) if (t.to?.startsWith(`${from}.`)) t.to = `${to}${t.to.slice(from.length)}`
   for (const p of d.points) if (p.device === from) p.device = to
   for (const r of d.routes) if (r.device === from) r.device = to
   for (const t of d.maintenance.tasks) t.devices = t.devices.map((x) => (x === from ? to : x))

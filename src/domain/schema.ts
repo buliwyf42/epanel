@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { APPLIANCE_PROFILES, BUS_SYSTEMS, CABLE_TYPES, CHANNEL_FUNCTIONS, DEVICE_TYPES, LOCALES, OPENING_KINDS, POINT_KINDS, ROUTE_KINDS, type ValidationIssue } from './model'
+import { APPLIANCE_PROFILES, BUS_SYSTEMS, CABLE_TYPES, CHANNEL_FUNCTIONS, CONDUCTORS, DEVICE_TYPES, LOCALES, OPENING_KINDS, POINT_KINDS, ROUTE_KINDS, TERMINAL_ROLES, type ValidationIssue } from './model'
 
 export const LocalizedText = z.union([z.string(), z.partialRecord(z.enum(LOCALES), z.string())])
 export type LocalizedText = z.infer<typeof LocalizedText>
@@ -38,6 +38,22 @@ export const Circuit = z.object({
 })
 export type Circuit = z.infer<typeof Circuit>
 
+export const Terminal = z.object({
+  // as printed on the device: 1, 2, 1L1, 2T1, N
+  id: z.string().min(1),
+  side: z.enum(['top', 'bottom']).default('top'),
+  role: z.enum(TERMINAL_ROLES).default('in'),
+  // feed group of a changeover switch (I, II); the device's `position` picks the live one
+  group: z.string().optional(),
+  conductor: z.enum(CONDUCTORS).optional(),
+  // "<device>.<terminal>", split at the last dot; a link is stored on one end only, the other end is derived
+  to: z.string().optional(),
+  color: z.string().optional(),
+  // mm², copper assumed
+  crossSection: z.number().positive().optional(),
+})
+export type Terminal = z.infer<typeof Terminal>
+
 export const Device = z.object({
   id: z.string().min(1),
   type: z.enum(DEVICE_TYPES),
@@ -58,7 +74,11 @@ export const Device = z.object({
   serial: z.string().optional(),
   // where to find a device that is not in this panel: a meter or breaker in the floor box on the landing
   location: LocalizedText.optional(),
+  // feeder set by hand; links on `terminals` take precedence when they name one
   upstream: z.string().optional(),
+  terminals: z.array(Terminal).default([]),
+  // changeover switch: the live feed group, or "0" for off
+  position: z.string().optional(),
   phase: z.enum(['L1', 'L2', 'L3', 'L1L2L3']).optional(),
   circuit: Circuit.optional(),
   tags: z.array(z.string()).default([]),

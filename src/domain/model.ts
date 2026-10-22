@@ -1,8 +1,8 @@
 // Plain data model: constants, types and helpers with no runtime dependency on zod.
 // The zod schemas live in ./schema and load only when a file is actually parsed.
-import type { Device, LocalizedText, PanelData, Route } from './schema'
+import type { Device, LocalizedText, PanelData, Route, Terminal } from './schema'
 
-export type { LocalizedText, Channel, Smart, Note, Circuit, Device, RowItem, Row, Point2, Room, PlanPoint, Cable, Route, Photo, MaintenanceTask, MaintenanceLog, DocumentRef, Contact, Opening, Plan, PanelData, PanelInput } from './schema'
+export type { LocalizedText, Channel, Smart, Note, Circuit, Terminal, Device, RowItem, Row, Point2, Room, PlanPoint, Cable, Route, Photo, MaintenanceTask, MaintenanceLog, DocumentRef, Contact, Opening, Plan, PanelData, PanelInput } from './schema'
 
 export const LOCALES = ['ru', 'en', 'sr', 'es'] as const
 export type Locale = (typeof LOCALES)[number]
@@ -41,7 +41,14 @@ export const RCD_TYPES: readonly DeviceType[] = ['rcd', 'rcbo']
 export const ISOLATING_TYPES: readonly DeviceType[] = ['mcb', 'rcd', 'rcbo', 'switch', 'afdd', 'fuse']
 export const SMART_TYPES: readonly DeviceType[] = ['actuator', 'bus-psu', 'bus-gateway', 'bus-io']
 
-export const BUS_SYSTEMS = ['knx', 'dali', 'modbus', 'zigbee', 'zwave', 'matter', 'wirenboard', 'other'] as const
+// a terminal's role decides which way power flows over a link: in ← out; a bus terminal (terminal block, busbar) is both
+export const TERMINAL_ROLES = ['in', 'out', 'bus'] as const
+export type TerminalRole = (typeof TERMINAL_ROLES)[number]
+export const CONDUCTORS = ['L1', 'L2', 'L3', 'N', 'PE'] as const
+// position of a changeover switch that feeds nothing
+export const POSITION_OFF = '0'
+
+export const BUS_SYSTEMS =['knx', 'dali', 'modbus', 'zigbee', 'zwave', 'matter', 'wirenboard', 'other'] as const
 export const CHANNEL_FUNCTIONS = ['switch', 'dimmer', 'blind', 'heating', 'hvac', 'input', 'other'] as const
 
 export const OPENING_KINDS = ['door', 'window'] as const
@@ -129,6 +136,16 @@ export function defaultWidth(d: Pick<Device, 'type' | 'poles' | 'width'>): numbe
 export type ValidationIssue = { path: string; message: string }
 
 // referential integrity is outside zod's reach, so it is checked separately
+// "<device>.<terminal>": device and terminal ids may both contain dots, so the longest device id that prefixes the ref wins
+export function resolveRef(ref: string, devices: readonly Device[]): { device: Device; terminal: Terminal } | undefined {
+  let best: Device | undefined
+  for (const d of devices) if (ref.startsWith(`${d.id}.`) && (!best || d.id.length > best.id.length)) best = d
+  if (!best) return undefined
+  const tid = ref.slice(best.id.length + 1)
+  const terminal = best.terminals.find((t) => t.id === tid)
+  return terminal ? { device: best, terminal } : undefined
+}
+
 export function referenceIssues(d: PanelData): ValidationIssue[] {
   const issues: ValidationIssue[] = []
   const ids = new Set<string>()
@@ -140,6 +157,15 @@ export function referenceIssues(d: PanelData): ValidationIssue[] {
   d.devices.forEach((dev, i) => {
     if (dev.upstream && !ids.has(dev.upstream))
       issues.push({ path: `devices.${i}.upstream`, message: `unknown device ${dev.upstream}` })
+  })
+  d.devices.forEach((dev, i) => {
+    const seen = new Set<string>()
+    dev.terminals.forEach((t, ti) => {
+      if (seen.has(t.id)) issues.push({ path: `devices.${i}.terminals.${ti}.id`, message: `duplicate terminal ${dev.id}.${t.id}` })
+      seen.add(t.id)
+      if (t.to && !resolveRef(t.to, d.devices))
+        issues.push({ path: `devices.${i}.terminals.${ti}.to`, message: `unknown terminal ${t.to}` })
+    })
   })
   d.rows.forEach((row, ri) =>
     row.items.forEach((it, ii) => {

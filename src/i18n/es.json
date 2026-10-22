@@ -622,6 +622,10 @@
       "route-drop-midair": {
         "title": "La bajada al punto no va por la pared",
         "hint": "El recorrido {route} sube o baja hasta «{point}», que está a más de 30 cm de una pared. Los tramos verticales solo van por dentro de la pared: acerca el punto a una pared o cambia el recorrido."
+      },
+      "conductor-mismatch": {
+        "title": "Conductores cruzados",
+        "hint": "El borne {terminal} de {device} lleva {conductor}, pero {to} está marcado como {other}."
       }
     },
     "rules": {
@@ -1089,6 +1093,28 @@
       "advanced": "Avanzado: rama y ruta del archivo",
       "remember": "Mantener la sesión en este dispositivo",
       "sessionExpired": "La sesión de GitHub ha caducado. Vuelve a entrar."
+    },
+    "terminals": {
+      "title": "Terminals",
+      "fromTemplate": "Standard terminals",
+      "empty": "No terminals yet. Add the standard set for this device type, then pick for each terminal what it is wired to.",
+      "id": "Terminal",
+      "top": "top",
+      "bottom": "bottom",
+      "role": {
+        "in": "input",
+        "out": "output",
+        "bus": "through (block)"
+      },
+      "to": "Connected to",
+      "none": "not connected",
+      "linkedFrom": "also wired from",
+      "conductor": "Conductor",
+      "group": "Feed group",
+      "color": "Wire colour",
+      "fromLinks": "from terminal links",
+      "position": "Switch position",
+      "positionOff": "0 (off)"
     }
   },
   "landing": {
