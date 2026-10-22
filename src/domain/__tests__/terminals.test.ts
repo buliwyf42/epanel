@@ -120,6 +120,48 @@ describe('terminal block colour', async () => {
   })
 })
 
+describe('terminal rename', () => {
+  it('moves links along with the id and refuses taken or empty ids', async () => {
+    const { renameTerminal } = await import('@/editor/ops')
+    const d = wired()
+    expect(renameTerminal(d, 'QS', '2', '2T1')).toBe(true)
+    expect(d.devices.find((x) => x.id === 'XB')!.terminals[0]!.to).toBe('QS.2T1')
+    expect(buildGraph(d).upstreamOf('XB')).toBe('QS')
+    expect(renameTerminal(d, 'QS', '2T1', 'I.1')).toBe(false)
+    expect(renameTerminal(d, 'QS', '2T1', '  ')).toBe(false)
+    expect(referenceIssues(d)).toEqual([])
+  })
+})
+
+describe('several feeders per group', () => {
+  it('is powered only while every live feeder is', () => {
+    const d = tiny({
+      rows: [{ id: 'r1', modules: 12, items: [] }],
+      points: [],
+      devices: [
+        { id: 'A', type: 'mcb', terminals: [{ id: '2', side: 'bottom', role: 'out' }] },
+        { id: 'B', type: 'mcb', terminals: [{ id: '2', side: 'bottom', role: 'out' }] },
+        {
+          id: 'D',
+          type: 'mcb',
+          poles: 2,
+          terminals: [
+            { id: '1', role: 'in', to: 'A.2' },
+            { id: '3', role: 'in', to: 'B.2' },
+          ],
+        },
+      ],
+    })
+    const g = buildGraph(d)
+    expect(g.upstreamOf('D')).toBe('A')
+    expect(g.feedersOf('D')).toEqual(['A', 'B'])
+    expect(g.isFed('D', new Set())).toBe(true)
+    // switching off the second feeder, not the tree parent, still cuts D
+    expect(g.isFed('D', new Set(['B']))).toBe(false)
+    expect(g.isFed('D', new Set(['A']))).toBe(false)
+  })
+})
+
 describe('shown terminals', async () => {
   const { shownTerminals } = await import('../terminals')
   type Dev = Parameters<typeof shownTerminals>[0]

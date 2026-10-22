@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { CONDUCTORS, TERMINAL_ROLES, type Terminal } from '@/domain/model'
 import { buildTerminalIndex, defaultTerminals, refKey } from '@/domain/terminals'
+import { renameTerminal } from '@/editor/ops'
+import { toast } from 'vue-sonner'
 import { useDraft } from '@/composables/useDraft'
 import { useText } from '@/composables/useText'
 import FormRow from './FormRow.vue'
@@ -28,6 +30,16 @@ function linkedFrom(tt: Terminal): string[] {
   return (index.value.links.get(refKey(props.id, tt.id)) ?? []).map((o) => refKey(o.device.id, o.terminal.id)).filter((r) => r !== tt.to)
 }
 
+// committed on blur/enter so links to the terminal move along with its id
+function commitId(tt: Terminal, e: Event) {
+  const input = e.target as HTMLInputElement
+  if (input.value.trim() === tt.id) return
+  if (!renameTerminal(d.value, props.id, tt.id, input.value)) {
+    toast.error(t('editor.terminals.idTaken'))
+    input.value = tt.id
+  }
+}
+
 function addTerminal() {
   const n = device.value.terminals.length + 1
   device.value.terminals.push({ id: String(n), side: 'top', role: 'in' })
@@ -46,7 +58,7 @@ function addTerminal() {
     <p v-if="!device.terminals.length" class="text-xs text-muted-foreground">{{ t('editor.terminals.empty') }}</p>
     <div v-for="(tt, i) in device.terminals" :key="i" class="space-y-2 rounded-xl border p-3">
       <div class="grid grid-cols-[4.5rem_1fr_1fr_auto] gap-2">
-        <Input v-model="tt.id" class="font-mono" :aria-label="t('editor.terminals.id')" />
+        <Input :model-value="tt.id" class="font-mono" :aria-label="t('editor.terminals.id')" @blur="commitId(tt, $event)" @keydown.enter="commitId(tt, $event)" />
         <Select v-model="tt.role">
           <SelectTrigger class="w-full"><SelectValue /></SelectTrigger>
           <SelectContent>

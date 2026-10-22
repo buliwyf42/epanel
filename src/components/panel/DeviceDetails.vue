@@ -28,7 +28,14 @@ const { t, tx } = useText()
 
 const device = computed(() => data.graph?.byId.get(props.id))
 const place = computed(() => locate(data.layout, props.id))
-const upstream = computed(() => data.graph?.ancestors(props.id) ?? [])
+// the tree chain, with further direct feeders (other phases from other devices) right after the parent
+const upstream = computed(() => {
+  const g = data.graph
+  if (!g) return []
+  const chain = g.ancestors(props.id)
+  const extra = g.feedersOf(props.id).slice(1).flatMap((id) => g.byId.get(id) ?? [])
+  return [...chain.slice(0, 1), ...extra, ...chain.slice(1)]
+})
 const children = computed(() => data.graph?.children.get(props.id) ?? [])
 const points = computed(() => data.graph?.pointsOf(props.id, true) ?? [])
 const pointIds = computed(() => new Set(points.value.map((p) => p.id)))

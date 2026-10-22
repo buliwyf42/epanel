@@ -1123,7 +1123,8 @@
       "color": "Wire colour",
       "fromLinks": "from terminal links",
       "position": "Switch position",
-      "positionOff": "0 (off)"
+      "positionOff": "0 (off)",
+      "idTaken": "This terminal id is empty or already used on this device."
     },
     "colorAuto": "Auto (from conductor)",
     "color": {

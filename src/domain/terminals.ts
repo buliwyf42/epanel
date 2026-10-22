@@ -56,16 +56,21 @@ export function buildTerminalIndex(devices: readonly Device[]): TerminalIndex {
   return { links, feeds }
 }
 
-// the feeder the tree hangs a device under: the first one of the live group, else the hand-set upstream.
-// ponytail: a 3-phase device fed from three different devices keeps only the first as its parent; fine while those are
-// passive blocks, a per-phase DAG is the upgrade if switching one phase off has to show up.
-export function effectiveUpstream(d: Device, idx: TerminalIndex): string | undefined {
+// every device that feeds the live group: a 3-phase device can take each phase from a different one, and it is only
+// powered while all of them are. Without links it is the hand-set upstream.
+export function liveFeeders(d: Device, idx: TerminalIndex): string[] {
   const groups = idx.feeds.get(d.id)
-  if (!groups) return d.upstream
+  if (!groups) return d.upstream ? [d.upstream] : []
   // a position naming a known group is taken literally: a group with no linked source leaves the device as a root
   // (its source, e.g. a backup inverter, is outside this panel), it never falls back to another group
-  if (d.position && d.position !== POSITION_OFF && feedGroups(d).includes(d.position)) return groups.get(d.position)?.[0]
-  return groups.values().next().value?.[0]
+  if (d.position && d.position !== POSITION_OFF && feedGroups(d).includes(d.position)) return groups.get(d.position) ?? []
+  return groups.values().next().value ?? []
+}
+
+// the feeder the tree hangs a device under: the first of the live feeders. The tree stays a tree for the diagram;
+// power checks use all live feeders (graph.isFed).
+export function effectiveUpstream(d: Device, idx: TerminalIndex): string | undefined {
+  return liveFeeders(d, idx)[0]
 }
 
 export const isOpen = (d: Device) => d.position === POSITION_OFF

@@ -89,6 +89,18 @@ export function addDevice(d: PanelData, type: DeviceType, rowIndex: number, at?:
   return dev
 }
 
+// renames one terminal and rewrites every link that points at it; refuses an empty or taken id
+export function renameTerminal(d: PanelData, deviceId: string, from: string, to: string): boolean {
+  const dev = d.devices.find((x) => x.id === deviceId)
+  const t = dev?.terminals.find((x) => x.id === from)
+  to = to.trim()
+  if (!dev || !t || !to || to === from || dev.terminals.some((x) => x.id === to)) return false
+  t.id = to
+  const oldRef = `${deviceId}.${from}`
+  for (const x of d.devices) for (const tt of x.terminals) if (tt.to === oldRef) tt.to = `${deviceId}.${to}`
+  return true
+}
+
 export function removeDevice(d: PanelData, id: string) {
   const dev = d.devices.find((x) => x.id === id)
   d.devices = d.devices.filter((x) => x.id !== id)

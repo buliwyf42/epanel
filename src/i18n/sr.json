@@ -1123,7 +1123,8 @@
       "color": "Boja provodnika",
       "fromLinks": "iz veza klema",
       "position": "Položaj preklopke",
-      "positionOff": "0 (isključeno)"
+      "positionOff": "0 (isključeno)",
+      "idTaken": "Naziv kleme je prazan ili ga uređaj već ima."
     },
     "colorAuto": "Automatski (po provodniku)",
     "color": {
