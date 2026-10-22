@@ -104,3 +104,16 @@ describe('terminal checks', () => {
     expect(runChecks(d, buildGraph(d)).map((r) => r.code)).not.toContain('conductor-mismatch')
   })
 })
+
+describe('terminal rename', () => {
+  it('moves links along with the id and refuses taken or empty ids', async () => {
+    const { renameTerminal } = await import('@/editor/ops')
+    const d = wired()
+    expect(renameTerminal(d, 'QS', '2', '2T1')).toBe(true)
+    expect(d.devices.find((x) => x.id === 'XB')!.terminals[0]!.to).toBe('QS.2T1')
+    expect(buildGraph(d).upstreamOf('XB')).toBe('QS')
+    expect(renameTerminal(d, 'QS', '2T1', 'I.1')).toBe(false)
+    expect(renameTerminal(d, 'QS', '2T1', '  ')).toBe(false)
+    expect(referenceIssues(d)).toEqual([])
+  })
+})

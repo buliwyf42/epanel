@@ -1114,7 +1114,8 @@
       "color": "Color del cable",
       "fromLinks": "según las conexiones de bornes",
       "position": "Posición del conmutador",
-      "positionOff": "0 (apagado)"
+      "positionOff": "0 (apagado)",
+      "idTaken": "El nombre del borne está vacío o ya existe en este dispositivo."
     }
   },
   "landing": {
