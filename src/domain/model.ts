@@ -27,6 +27,7 @@ export const DEVICE_TYPES = [
   'ups',
   'bus',
   'terminal',
+  'distribution-block',
   'actuator',
   'bus-psu',
   'bus-gateway',
