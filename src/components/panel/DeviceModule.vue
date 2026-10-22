@@ -64,7 +64,8 @@ const blockLabel = computed(() => {
 const blockHoles = computed(() => {
   const ts = [...props.device.terminals].sort((a, b) => (a.side === b.side ? 0 : a.side === 'top' ? -1 : 1))
   const n = ts.length || 6
-  const cols = Math.max(1, Math.min(n, Math.floor((W.value - 6) / 16)))
+  // 13 px per clamp keeps a 1.4-module block at 3 × 2 like the real ones; narrower blocks fall back to fewer columns
+  const cols = Math.max(1, Math.min(n, Math.floor((W.value - 6) / 13)))
   const rows = Math.ceil(n / cols)
   const top = 46
   const bottom = HEIGHT - 52
