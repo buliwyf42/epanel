@@ -62,8 +62,10 @@ export function buildTerminalIndex(devices: readonly Device[]): TerminalIndex {
 export function effectiveUpstream(d: Device, idx: TerminalIndex): string | undefined {
   const groups = idx.feeds.get(d.id)
   if (!groups) return d.upstream
-  const live = d.position && d.position !== POSITION_OFF ? groups.get(d.position) : undefined
-  return (live ?? groups.values().next().value)?.[0]
+  // a position naming a known group is taken literally: a group with no linked source leaves the device as a root
+  // (its source, e.g. a backup inverter, is outside this panel), it never falls back to another group
+  if (d.position && d.position !== POSITION_OFF && feedGroups(d).includes(d.position)) return groups.get(d.position)?.[0]
+  return groups.values().next().value?.[0]
 }
 
 export const isOpen = (d: Device) => d.position === POSITION_OFF

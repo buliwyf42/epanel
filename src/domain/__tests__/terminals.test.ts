@@ -52,6 +52,10 @@ describe('terminals', () => {
     expect(off.isPowered('QS', new Set())).toBe(false)
     expect(off.isFed('XB', new Set())).toBe(false)
     expect(buildGraph(wired('I')).isFed('XB', new Set())).toBe(true)
+    // the live group without a linked source makes the switch a root, not a fallback to group I
+    const g2 = wired('II')
+    g2.devices.find((x) => x.id === 'QS')!.terminals[1]!.to = undefined
+    expect(buildGraph(g2).upstreamOf('QS')).toBeUndefined()
   })
 
   it('reports dangling links and duplicate terminal ids', () => {
