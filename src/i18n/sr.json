@@ -131,7 +131,7 @@
       "impulse-relay": "Impulsni relej",
       "dimmer": "Dimer",
       "psu": "Napajanje 12/24 V",
-      "ats": "Automatsko preključivanje",
+      "ats": "Preklopnik napajanja",
       "ups": "UPS"
     },
     "typeShort": {
@@ -157,7 +157,7 @@
       "impulse-relay": "Imp. relej",
       "dimmer": "Dimer",
       "psu": "Napajanje",
-      "ats": "ATS",
+      "ats": "Preklopnik",
       "ups": "UPS"
     },
     "field": {
@@ -212,7 +212,7 @@
       "impulse-relay": "Svetlo se pali i gasi tasterima sa više mesta",
       "dimmer": "Postepeno menja jačinu svetla",
       "psu": "Napaja LED trake, senzore, slabu struju",
-      "ats": "Prebacuje stan na drugi priključak ili agregat kad nestane glavni",
+      "ats": "Prebacuje stan između glavnog priključka i drugog priključka ili agregata, ručno (I–0–II) ili automatski",
       "ups": "Drži ruter, kotao ili pumpu na bateriji kad nestane struje"
     }
   },

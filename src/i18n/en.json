@@ -131,7 +131,7 @@
       "impulse-relay": "Impulse relay",
       "dimmer": "Dimmer",
       "psu": "12/24 V power supply",
-      "ats": "Automatic transfer switch",
+      "ats": "Transfer switch",
       "ups": "UPS"
     },
     "typeShort": {
@@ -157,7 +157,7 @@
       "impulse-relay": "Impulse",
       "dimmer": "Dimmer",
       "psu": "PSU 12/24 V",
-      "ats": "ATS",
+      "ats": "Transfer",
       "ups": "UPS"
     },
     "field": {
@@ -212,7 +212,7 @@
       "impulse-relay": "Lights switched by push buttons from several places",
       "dimmer": "Sets the brightness of the lights smoothly",
       "psu": "Powers LED strips, sensors, low-voltage gear",
-      "ats": "Moves the flat to a second feed or a generator when the main one fails",
+      "ats": "Switches the flat between the main feed and a second feed or a generator, by hand (I–0–II) or automatically",
       "ups": "Keeps the router, boiler or pump on battery during a power cut"
     }
   },

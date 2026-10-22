@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SMART_TYPES, type Device } from '@/domain/model'
+import { POSITION_OFF, SMART_TYPES, type Device } from '@/domain/model'
 import { useData } from '@/stores/data'
 import { HEIGHT, MODULE } from './geometry'
 
@@ -45,6 +45,9 @@ const leverColor = computed(() => {
 })
 
 const terminalsTop = computed(() => Array.from({ length: Math.max(1, Math.round(props.width)) }, (_, i) => i))
+
+// transfer switch: the lever of the selected group is up; position 0 leaves both down, no position means group I
+const atsLive = computed(() => (props.device.position === POSITION_OFF ? undefined : (props.device.position ?? 'I')))
 
 // no live data yet: the relay shows the nominal supply voltage and the meter no reading,
 // so nothing on screen can be mistaken for a measurement
@@ -229,9 +232,9 @@ const busColor = computed(() => {
     <template v-else-if="t === 'ats'">
       <g v-for="(n, i) in ['I', 'II']" :key="n" :transform="`translate(${(i + 0.5) * (W / 2)}, 0)`">
         <rect x="-10" y="64" width="20" height="36" rx="3" fill="#2a2a28" />
-        <rect x="-8" :y="i === 0 && energized ? 66 : 82" width="16" height="16" rx="2" fill="url(#lever-red)" class="lever" />
+        <rect x="-8" :y="n === atsLive ? 66 : 82" width="16" height="16" rx="2" fill="url(#lever-red)" class="lever" />
         <text y="114" text-anchor="middle" class="tiny">{{ n }}</text>
-        <circle cy="56" r="3" :fill="i === 0 && energized ? '#22c55e' : '#3a3a3a'" />
+        <circle cy="56" r="3" :fill="n === atsLive && energized ? '#22c55e' : '#3a3a3a'" />
       </g>
       <text :x="W / 2" y="134" text-anchor="middle" class="rating">{{ rating }}</text>
     </template>

@@ -131,7 +131,7 @@
       "impulse-relay": "Telerruptor",
       "dimmer": "Regulador",
       "psu": "Fuente de 12/24 V",
-      "ats": "Conmutador automático de red",
+      "ats": "Conmutador de red",
       "ups": "SAI"
     },
     "typeShort": {
@@ -157,7 +157,7 @@
       "impulse-relay": "Telerruptor",
       "dimmer": "Regulador",
       "psu": "Fuente 12/24 V",
-      "ats": "ATS",
+      "ats": "Conmutador",
       "ups": "SAI"
     },
     "field": {
@@ -212,7 +212,7 @@
       "impulse-relay": "Luz que se enciende y apaga con pulsadores desde varios puntos",
       "dimmer": "Ajusta suavemente la intensidad de las luces",
       "psu": "Alimenta tiras LED, sensores, baja tensión",
-      "ats": "Pasa la vivienda a una segunda acometida o generador cuando cae la principal",
+      "ats": "Pasa la vivienda entre la acometida principal y una segunda o un generador, a mano (I–0–II) o de forma automática",
       "ups": "Mantiene el router, la caldera o la bomba con batería durante un corte"
     }
   },
